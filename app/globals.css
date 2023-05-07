@@ -4,24 +4,39 @@
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 21,35,49;
+      /* COLORS FOR TEXT GRADIENT */
+      --bg: rgb(38 38 38 / 0);
+      --clr-1: #78ddff;
+      --clr-2: #33ff8c;
+      --clr-3: #674ea7;
+      --clr-4: #e54cff;
+    
+      --blur: 1rem;
+      --fs: clamp(3rem, 8vw, 7rem);
+      --ls: clamp(-1.75px, -0.25vw, -3.5px);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --background-end-rgb: 21,35,49;
   }
 }
 
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
-      to bottom,
+    180deg,
       transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+      rgb(var(--background-end-rgb)) 0%,
+      rgb(var(--background-start-rgb)) 95.32%
+
+    );
 }
+
+
+
+
