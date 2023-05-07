@@ -53,7 +53,7 @@ export default function NameCard() {
           priority
           height="0"
           sizes="100vw"
-          style={{ width: "auto", height: "200px", borderRadius: "9999px" }}
+          style={{ width: "auto", height: "110px", borderRadius: "9999px" }}
         />
         <div className="flex flex-col gap-2  ">
           <h1 className={style.title + ` text-current`}>
