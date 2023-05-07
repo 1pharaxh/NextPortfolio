@@ -1,4 +1,4 @@
-import style from '../styles/nameCard.module.css'
+import style from '../styles/NameCard.module.css'
 import Image from 'next/image'
 interface NameCardProps {
   // define the props for the NameCard component here
