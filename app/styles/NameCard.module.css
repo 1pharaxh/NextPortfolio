@@ -1,7 +1,7 @@
 
 
 
-/* 
+
 
 
 .title{
@@ -32,9 +32,9 @@
     100%{background-position: 0% 50%}
 } 
 
- */
 
-.title {
+
+/* .title {
     font-size: var(--fs);
     font-weight: 800;
     letter-spacing: var(--ls);
@@ -204,4 +204,4 @@
     100% {
       border-radius: 37% 29% 27% 27% / 28% 25% 41% 37%;
     }
-  }
+  } */
