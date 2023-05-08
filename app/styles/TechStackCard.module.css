@@ -23,6 +23,7 @@
   .tag {
     display: flex;
     align-items: center;
+    flex-direction: column;
     gap: 0 0.2rem;
     color: #e2e8f0;
     font-size: 0.9rem;

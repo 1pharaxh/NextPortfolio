@@ -1,3 +1,4 @@
+"use client";
 import { CSSProperties } from "react";
 
 import style from "../styles/TechStackCard.module.css";
@@ -19,18 +20,26 @@ declare global {
 export default function TechStackCard({ className = "" }: TechStackCardProps) {
   const TAGS = [
     "android",
-    "github",
+    "arduino",
+    "bash",
+    "bootstrap",
+    "capacitorjs",
+    "cordova",
+    "cpp",
+    "css",
     "docker",
     "expressjs",
     "firebase",
     "flask",
     "flutter",
+    "github",
     "html",
     "ionic",
     "java",
     "javascript",
     "linux",
     "mongodb",
+    "next",
     "nodejs",
     "photoshop",
     "postman",
@@ -40,17 +49,10 @@ export default function TechStackCard({ className = "" }: TechStackCardProps) {
     "threejs",
     "typescript",
     "vuejs",
-    "arduino",
-    "bash",
-    "bootstrap",
-    "capacitor",
-    "cordova",
-    "css",
-    "next",
   ];
   const DURATION = 15000;
-  const ROWS = 5;
-  const TAGS_PER_ROW = 5;
+  const ROWS = 4;
+  const TAGS_PER_ROW = 7;
 
   const random = (min: number, max: number) =>
     Math.floor(Math.random() * (max - min)) + min;
@@ -85,18 +87,7 @@ export default function TechStackCard({ className = "" }: TechStackCardProps) {
                       height={50}
                       alt={tag + " logo"}
                     />
-                  </div>
-                ))}
-              {shuffle(TAGS)
-                .slice(0, TAGS_PER_ROW)
-                .map((tag) => (
-                  <div key={tag} className={style["tag"]}>
-                    <Image
-                      src={"/" + tag + "-cropped" + ".svg"}
-                      width={50}
-                      height={50}
-                      alt={tag + " logo"}
-                    />
+                    {tag}
                   </div>
                 ))}
             </div>
