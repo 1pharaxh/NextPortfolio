@@ -43,20 +43,20 @@ export default function NameCard() {
       <div
         ref={cardsRef}
         onMouseMove={handleMouseMove}
-        className="card group rounded-lg border px-5 flex flex-col items-center md:flex-row gap-4 py-4 transition-colors border-neutral-700 bg-neutral-800/30"
+        className="card h-auto md:h-36 group rounded-3xl border px-5 flex flex-col items-center md:flex-row gap-4 py-10 md:py-4 transition-colors border-neutral-700 bg-neutral-800/30"
       >
         <Image
-          className="hover:rotate-3 hover:scale-110 transition-all duration-500 ease-in-out z-10"
+          className="h-[250px] md:h-[110px] hover:rotate-3 hover:scale-110 transition-all duration-500 ease-in-out z-10"
           src="/akarshan.jpeg"
           alt="Picture of the author"
           width="0"
           priority
           height="0"
           sizes="100vw"
-          style={{ width: "auto", height: "110px", borderRadius: "9999px" }}
+          style={{ width: "auto", borderRadius: "9999px" }}
         />
-        <div className="flex flex-col gap-2  ">
-          <h1 className={style.title + ` text-current`}>
+        <div className="flex flex-col gap-2 items-center md:items-start">
+          <h1 className={style.title + ` text-4xl md:text-3xl lg:text-4xl`}>
             Akarshan Mishra, 19
             <div className={style.aurora}>
               <div className={style.aurora__item}></div>
@@ -66,10 +66,10 @@ export default function NameCard() {
               <div className={style.aurora__item}></div>
             </div>
           </h1>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            👨🏽‍💻Full stack Developer
+          <p className={`m-0 max-w-[30ch] text-base md:text-sm opacity-50`}>
+            👨🏻‍💻Full stack Developer
           </p>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
+          <p className={`m-0 max-w-[30ch] text-base md:text-sm opacity-50`}>
             🧠Student at uAlberta'25
           </p>
         </div>
