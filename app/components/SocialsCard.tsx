@@ -86,7 +86,7 @@ export default function SocialsCard({ className = "" }: SocialsCardProps) {
           </div>
         </div>
 
-        <div className="group h-full px-2 w-2/4 group-hover:w-3/4 bg-blue-700 flex flex-col gap-3 justify-center rounded-tr-3xl rounded-br-3xl cursor-pointer transition-all duration-300">
+        <div className="group h-full px-2 w-2/4 hover:w-3/4 bg-blue-700 flex flex-col gap-3 justify-center rounded-tr-3xl rounded-br-3xl cursor-pointer transition-all duration-300">
           <Image
             className="h-[100px] md:h-[70px] group-hover:rotate-3 group-hover:scale-110 transition-all duration-500 ease-in-out z-10"
             src="/linkedin.svg"

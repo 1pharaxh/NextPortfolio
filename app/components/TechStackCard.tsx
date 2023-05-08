@@ -1,8 +1,8 @@
-"use client";
 import { CSSProperties } from "react";
 
 import style from "../styles/TechStackCard.module.css";
 import Image from "next/image";
+import seedrandom from "seedrandom";
 
 interface TechStackCardProps {
   // define the props for the NameCard component here
@@ -19,44 +19,45 @@ declare global {
 
 export default function TechStackCard({ className = "" }: TechStackCardProps) {
   const TAGS = [
-    "android",
-    "arduino",
     "bash",
-    "bootstrap",
-    "capacitorjs",
-    "cordova",
-    "cpp",
-    "css",
-    "docker",
-    "expressjs",
-    "firebase",
-    "flask",
-    "flutter",
-    "github",
-    "html",
-    "ionic",
-    "java",
-    "javascript",
-    "linux",
-    "mongodb",
-    "next",
-    "nodejs",
-    "photoshop",
-    "postman",
-    "python",
     "react",
-    "tensorflow",
-    "threejs",
     "typescript",
-    "vuejs",
+    "flutter",
+    "nextjs",
+    "tailwind",
+    "git",
+    "nodejs",
+    "mongodb",
+    "java",
+    "gradle",
+    "github_logo",
+    "vscode",
+    "html",
+    "css",
+    "javascript",
+    "python",
+    "cpp",
+    "figma",
+    "vite",
+    "gcp",
+    "firebase",
+    "python",
+    "androidstudio",
+    "mysql",
+    "bash",
   ];
-  const DURATION = 15000;
-  const ROWS = 4;
-  const TAGS_PER_ROW = 7;
+  const DURATION = 60000;
+  const ROWS = 3;
+  const TAGS_PER_ROW = 29;
 
   const random = (min: number, max: number) =>
-    Math.floor(Math.random() * (max - min)) + min;
-  const shuffle = (arr: any[]) => [...arr].sort(() => 0.5 - Math.random());
+    Math.floor(0.689 * (max - min)) + min;
+
+  const shuffle = (arr: any[], row: number) => {
+    const seed = row + 1; // use row number as seed value
+    const rng = seedrandom(seed.toString()); // initialize random number generator
+    return [...arr].sort(() => rng() - 0.523); // shuffle the array using the random number generator
+  };
   return (
     <div
       className={
@@ -77,17 +78,31 @@ export default function TechStackCard({ className = "" }: TechStackCardProps) {
             }
           >
             <div className={style["inner"]}>
-              {shuffle(TAGS)
+              {shuffle(TAGS, i)
                 .slice(0, TAGS_PER_ROW)
                 .map((tag) => (
                   <div key={tag} className={style["tag"]}>
                     <Image
-                      src={"/" + tag + "-cropped" + ".svg"}
-                      width={50}
-                      height={50}
-                      alt={tag + " logo"}
+                      src={`/${tag}.svg`}
+                      alt={tag}
+                      width={40}
+                      height={40}
                     />
-                    {tag}
+                    <span></span>
+                  </div>
+                ))}
+              {shuffle(TAGS, i)
+                .slice(0, TAGS_PER_ROW)
+                .map((tag) => (
+                  <div key={tag} className={style["tag"]}>
+                    <Image
+                      src={`/${tag}.svg`}
+                      alt={tag}
+                      width={0}
+                      className="h-[50px] w-[50px]"
+                      height={0}
+                    />
+                    <span></span>
                   </div>
                 ))}
             </div>
@@ -95,6 +110,8 @@ export default function TechStackCard({ className = "" }: TechStackCardProps) {
         ))}
         <div>
           <h1 className="text-center">
+            <i className="fab fa-react" />
+
             <span className="font-extrabold text-xl">My TECH STACK </span>
             <span className=" text-base opacity-50">in 2023</span>
           </h1>

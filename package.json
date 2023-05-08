@@ -20,7 +20,11 @@
     "react-dom": "18.2.0",
     "react-github-calendar": "^4.0.0",
     "react-tilt": "^1.0.2",
+    "seedrandom": "^3.0.5",
     "tailwindcss": "3.3.2",
     "typescript": "5.0.4"
+  },
+  "devDependencies": {
+    "@types/seedrandom": "^3.0.5"
   }
 }
