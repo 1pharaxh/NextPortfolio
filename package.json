@@ -13,7 +13,6 @@
     "@types/react": "18.2.5",
     "@types/react-dom": "18.2.4",
     "autoprefixer": "10.4.14",
-    "css-doodle": "^0.34.9",
     "framer-motion": "^10.12.8",
     "next": "13.4.1",
     "postcss": "8.4.23",
