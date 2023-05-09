@@ -16,16 +16,16 @@ export default function MarqueeText({ text = "" }: MarqueeTextProps) {
     <div className={style["container"]}>
       <div className={style["marquee"]}>
         <div className={style["marquee__inner"] + " " + style["first"]}>
-          <span>{text}</span>
-          <span>{text}</span>
-          <span>{text}</span>
-          <span>{text}</span>
+          <span className="italic">{text}</span>
+          <span className="italic">{text}</span>
+          <span className="italic">{text}</span>
+          <span className="italic">{text}</span>
         </div>
         <div className={style["marquee__inner"] + " " + style["second"]}>
-          <span>{text}</span>
-          <span>{text}</span>
-          <span>{text}</span>
-          <span>{text}</span>
+          <span className="italic">{text}</span>
+          <span className="italic">{text}</span>
+          <span className="italic">{text}</span>
+          <span className="italic">{text}</span>
         </div>
       </div>
     </div>
