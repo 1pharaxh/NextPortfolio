@@ -46,7 +46,7 @@ export default function NameCard({ className = "" }: NameCardProps) {
           style={{ width: "auto", borderRadius: "9999px" }}
         />
         <div className="flex flex-col gap-2 items-center md:items-start">
-          <h1 className={style.title + ` text-3xl md:text-3xl lg:text-5xl`}>
+          <h1 className={style.title2 + ` text-3xl md:text-3xl lg:text-5xl`}>
             Akarshan Mishra, 19
             <div className={style.aurora}>
               <div className={style.aurora__item}></div>

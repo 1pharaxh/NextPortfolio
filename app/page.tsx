@@ -39,7 +39,7 @@ export default function Home() {
           <AboutCard />
         </div>
       </div>
-      <div className="flex flex-col w-full items-center md:items-stretch md:flex-row gap-4 md:gap-2">
+      <div className="flex flex-col h-[600px] md:h-[400px] w-full items-center md:items-stretch md:flex-row gap-4 md:gap-2">
         <div className="flex-initial w-full md:w-3/6">
           <ResumeCard />
         </div>
