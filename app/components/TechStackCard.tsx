@@ -1,5 +1,5 @@
 import { CSSProperties } from "react";
-import { Tilt } from "react-tilt";
+// import { Tilt } from "react-tilt";
 
 import style from "../styles/TechStackCard.module.css";
 import Image from "next/image";
@@ -71,7 +71,7 @@ export default function TechStackCard({ className = "" }: TechStackCardProps) {
     return [...arr].sort(() => rng() - 0.523); // shuffle the array using the random number generator
   };
   return (
-    <Tilt options={defaultOptions}>
+    <div>
       <div
         className={
           `group rounded-3xl h-full md:h-[600px] lg:h-[320px] flex-col flex items-center justify-center border  transition-colors border-neutral-700 bg-neutral-800/30 w-auto` +
@@ -132,6 +132,6 @@ export default function TechStackCard({ className = "" }: TechStackCardProps) {
           <div className={style["fade"]} />
         </div>
       </div>
-    </Tilt>
+    </div>
   );
 }

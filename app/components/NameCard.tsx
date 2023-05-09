@@ -1,6 +1,5 @@
-"use client";
 import style from "../styles/NameCard.module.css";
-import { Tilt } from "react-tilt";
+// import { Tilt } from "react-tilt";
 
 import Image from "next/image";
 interface NameCardProps {
@@ -28,7 +27,7 @@ export default function NameCard({ className = "" }: NameCardProps) {
     easing: "cubic-bezier(.03,.98,.52,.99)", // Easing on enter/exit.
   };
   return (
-    <Tilt options={defaultOptions}>
+    <div>
       <div
         className={
           "card h-auto md:h-48 w-full group rounded-3xl border px-2 md:px-5 flex flex-col items-center md:flex-row gap-4 py-10 md:py-4 transition-colors border-neutral-700 bg-neutral-800/30 " +
@@ -68,6 +67,6 @@ export default function NameCard({ className = "" }: NameCardProps) {
           </p>
         </div>
       </div>
-    </Tilt>
+    </div>
   );
 }

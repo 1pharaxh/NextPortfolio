@@ -1,6 +1,7 @@
+"use client";
 import Image from "next/image";
 import GitHubCalendar from "react-github-calendar";
-import { Tilt } from "react-tilt";
+// import { Tilt } from "react-tilt";
 
 interface SocialsCardProps {
   // define the props for the SocialsCard component here
@@ -52,7 +53,7 @@ export default function SocialsCard({ className = "" }: SocialsCardProps) {
     });
   };
   return (
-    <Tilt options={defaultOptions}>
+    <div>
       <div
         className={
           "h-48 md:h-48 rounded-3xl border flex flex-row items-center transition-colors border-neutral-700 overflow-hidden " +
@@ -102,6 +103,6 @@ export default function SocialsCard({ className = "" }: SocialsCardProps) {
           </h1>
         </div>
       </div>
-    </Tilt>
+    </div>
   );
 }
