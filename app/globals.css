@@ -3,10 +3,14 @@
 @tailwind utilities;
 
 :root {
+  --resume-text-color: #EDEEE9;
+
+  /* Color for STAR text */
   --purple: rgb(123, 31, 162);
   --violet: rgb(103, 58, 183);
   --pink: rgb(244, 143, 177);
 
+  /* Default Colors used by Tailwind CSS  */
   --foreground-rgb: 255, 255, 255;
   --background-start-rgb: 0, 0, 0;
   --background-end-rgb: 21,35,49;
