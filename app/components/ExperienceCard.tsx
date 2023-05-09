@@ -12,7 +12,7 @@ export default function ExperienceCard() {
   return (
     <div
       className={
-        "card group rounded-3xl w-auto flex flex-col h-full items-start justify-center  border  px-5 py-4 transition-colors border-neutral-700 bg-neutral-800/30"
+        "card group rounded-3xl w-auto flex flex-col h-full items-center justify-center  border  px-5 py-4 transition-colors border-neutral-700 bg-neutral-800/30"
       }
     >
       <h2

@@ -32,7 +32,7 @@
    .marquee {
     position: relative;
     overflow: hidden;
-    --offset: 20vw;
+    --offset: 40vw;
     --move-initial: calc(-25% + var(--offset));
     --move-final: calc(-50% + var(--offset));
   }
@@ -43,7 +43,7 @@
     white-space: nowrap;
   }
    .marquee__inner span {
-    font-size: 5vw;
+    font-size: 5rem;
     padding: 0 2vw;
     text-transform: uppercase;
   }
