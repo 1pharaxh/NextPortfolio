@@ -5,6 +5,7 @@ import TechStackCard from "./components/TechStackCard";
 import AboutCard from "./components/AboutCard";
 import ResumeCard from "./components/ResumeCard";
 import CodeBlockCard from "./components/CodeBlockCard";
+import ExperienceCard from "./components/ExperienceCard";
 export default function Home() {
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     const cards = Array.from(document.getElementsByClassName("card"));
@@ -47,6 +48,7 @@ export default function Home() {
           <CodeBlockCard />
         </div>
       </div>
+      <ExperienceCard />
 
       {/* <div className="card group rounded-3xl  border  px-5 py-4 transition-colors border-neutral-700 bg-neutral-800/30">
         <h2 className={`mb-3 text-2xl font-semibold`}>Card Heading</h2>
