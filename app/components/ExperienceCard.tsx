@@ -12,9 +12,15 @@ export default function ExperienceCard() {
   return (
     <div
       className={
-        "card group rounded-3xl w-full  border  px-5 py-4 transition-colors border-neutral-700 bg-neutral-800/30"
+        "card group rounded-3xl w-auto flex flex-col h-full items-start justify-center  border  px-5 py-4 transition-colors border-neutral-700 bg-neutral-800/30"
       }
     >
+      <h2
+        className={`mb-3 text-3xl md:text-5xl text-center md:text-start font-semibold`}
+        // make the outline appear
+      >
+        Work Experience
+      </h2>
       <ul className={styles.timeline}>
         <li>
           <div className={styles["direction-r"]}>
@@ -52,26 +58,24 @@ export default function ExperienceCard() {
               </p>
               <br />
               <p>
-                ● Developed an android app that visualizes energy usage and
-                empowers users to make informed decisions, resulting in reduced
-                energy consumption by end-users.
+                ● Developed an energy usage visualization app for Android that
+                reduced energy consumption by end-users.
               </p>
               <br />
               <p>
-                ● Created customized widgets in the app using Vue.js and
-                Javascript to improve the user experience and enhance the
-                functionality of the app.
+                ● Enhanced app functionality and user experience by creating
+                customized Vue.js and Javascript widgets.
               </p>{" "}
               <br />
               <p>
-                ● Integrated push notifications in the app with Google Firebase
-                to ensure timely updates and alerts for users.
+                ● Integrated push notifications with Google Firebase to ensure
+                timely updates and alerts.
               </p>
               <br />
               <p>
-                ● Conducted log-linear analysis on data using Python's
-                Scikit-Learn (sklearn) library to make future predictions and
-                used Vue.js and ChartJs to create UI chart components.{" "}
+                ● Conducted log-linear analysis using Python's Scikit-Learn
+                library and created UI chart components using Vue.js and
+                ChartJs.
               </p>
             </div>
           </div>
@@ -90,14 +94,13 @@ export default function ExperienceCard() {
                 <b>Engineering Intern</b>
               </p>
               <p>
-                ● Analyzed options available for client needs and recommended
-                solutions based on time and resource considerations, which led
-                to acquiring new projects.
+                ● Recommended solutions to clients based on time and resource
+                constraints.
               </p>
               <br />
               <p>
-                ● Developed reports and quotations about project specifications
-                for clients based around their requirements and budget.
+                ● Created project reports and quotes tailored to client
+                requirements and budget.
               </p>
             </div>
           </div>

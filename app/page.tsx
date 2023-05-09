@@ -40,15 +40,23 @@ export default function Home() {
           <AboutCard />
         </div>
       </div>
-      <div className="flex flex-col h-[600px] md:h-[400px] w-full items-center md:items-stretch md:flex-row gap-4 md:gap-2">
-        <div className="flex-initial w-full md:w-3/6">
-          <ResumeCard />
+
+      <div className="flex flex-col w-full items-center md:items-stretch md:flex-row gap-4 md:gap-2">
+        <div className="flex-initial w-full md:w-3/6 lg:w-4/6">
+          <ExperienceCard />
         </div>
-        <div className="flex-initial w-full md:w-3/6">
-          <CodeBlockCard />
+
+        <div className="flex-initial w-full md:w-3/6 lg:w-2/6">
+          <div className="flex flex-col h-full gap-2 justify-between">
+            <div className="flex-initial ">
+              <ResumeCard />
+            </div>
+            <div className="flex-initial ">
+              <CodeBlockCard />
+            </div>
+          </div>
         </div>
       </div>
-      <ExperienceCard />
 
       {/* <div className="card group rounded-3xl  border  px-5 py-4 transition-colors border-neutral-700 bg-neutral-800/30">
         <h2 className={`mb-3 text-2xl font-semibold`}>Card Heading</h2>
