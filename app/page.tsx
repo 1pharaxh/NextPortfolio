@@ -1,3 +1,4 @@
+"use client";
 import NameCard from "./components/NameCard";
 import SocialsCard from "./components/SocialsCard";
 import TechStackCard from "./components/TechStackCard";
@@ -17,7 +18,10 @@ export default function Home() {
     }
   };
   return (
-    <main className="flex min-h-screen gap-2 flex-col md:items-center p-4 md:p-24 ">
+    <main
+      onMouseMove={handleMouseMove}
+      className="flex min-h-screen gap-2 flex-col md:items-center p-4 md:p-24 "
+    >
       <div className="flex flex-col w-full items-center md:items-stretch md:flex-row gap-4 md:gap-2">
         <div className="flex-initial w-full md:w-4/6">
           <NameCard />

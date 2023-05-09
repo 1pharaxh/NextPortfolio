@@ -1,4 +1,4 @@
-// import { Tilt } from "react-tilt";
+import { Tilt } from "react-tilt";
 
 import StarText from "./StarText";
 interface AboutCardProps {
@@ -26,7 +26,7 @@ export default function AboutCard({ className = "" }: AboutCardProps) {
     easing: "cubic-bezier(.03,.98,.52,.99)", // Easing on enter/exit.
   };
   return (
-    <div>
+    <Tilt options={defaultOptions}>
       <div className="card group overflow-hidden h-full md:h-[600px] lg:h-[320px]  rounded-3xl border px-5 py-4 transition-colors border-neutral-700 bg-neutral-800/30">
         <StarText text="Full Stack Web Developer" />
         <div className="flex flex-col gap-3">
@@ -59,6 +59,6 @@ export default function AboutCard({ className = "" }: AboutCardProps) {
           </p>
         </div>
       </div>
-    </div>
+    </Tilt>
   );
 }
