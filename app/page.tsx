@@ -6,7 +6,26 @@ import AboutCard from "./components/AboutCard";
 import ResumeCard from "./components/ResumeCard";
 import CodeBlockCard from "./components/CodeBlockCard";
 import ExperienceCard from "./components/ExperienceCard";
+import ProjectCard from "./components/ProjectCard";
+import { useEffect, useState } from "react";
 export default function Home() {
+  const [hasScrolled, setHasScrolled] = useState(false);
+  // Hook to check if user has scrolled down
+  useEffect(() => {
+    function handleScroll() {
+      if (window.scrollY > 0) {
+        setHasScrolled(true);
+      } else {
+        setHasScrolled(false);
+      }
+    }
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     const cards = Array.from(document.getElementsByClassName("card"));
     for (let card of cards) {
@@ -29,6 +48,12 @@ export default function Home() {
         </div>
         <div className="flex-initial w-full md:w-2/6">
           <SocialsCard />
+        </div>
+      </div>
+
+      <div className={hasScrolled ? `hidden transition-all` : `scroll-downs `}>
+        <div className="mousey">
+          <div className="scroller"></div>
         </div>
       </div>
 
@@ -57,6 +82,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <ProjectCard />
 
       {/* <div className="card group rounded-3xl  border  px-5 py-4 transition-colors border-neutral-700 bg-neutral-800/30">
         <h2 className={`mb-3 text-2xl font-semibold`}>Card Heading</h2>
