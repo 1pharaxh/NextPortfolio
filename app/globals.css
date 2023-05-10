@@ -187,26 +187,25 @@ h1 > .magic > .magic-text {
 
 /* Mouse scroller  */
 .scroll-downs {
+  z-index: 9999;
   position: absolute;
   right: 0;
   bottom: 0;
   margin: 0 30px 30px 0;
-  
-  width :34px;
-  height: 55px;
+
 }
 .mousey {
-  width: 3px;
-  padding: 10px 15px;
-  height: 35px;
+  width: 15px;
+  padding: 10px 10px 10px 17px;
+  height: 55px;
   border: 2px solid #fff;
   border-radius: 25px;
   opacity: 0.75;
   box-sizing: content-box;
 }
 .scroller {
-  width: 3px;
-  height: 10px;
+  width: 5px;
+  height: 15px;
   border-radius: 25%;
   background-color: #fff;
   animation-name: scroll;
