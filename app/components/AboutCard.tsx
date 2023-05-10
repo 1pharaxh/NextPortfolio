@@ -29,17 +29,17 @@ export default function AboutCard({ className = "" }: AboutCardProps) {
     <Tilt options={defaultOptions}>
       <div className="card group overflow-hidden flex flex-col px-4 py-4 justify-center items-start h-full md:h-[600px] lg:h-[320px]  rounded-3xl border transition-colors border-neutral-700 bg-neutral-800/30">
         <div className="flex flex-col gap-3">
-          <p className={`m-0  text-base md:text-lg opacity-100`}>
+          <div className={`m-0  text-base md:text-lg opacity-100`}>
             <StarText
               beforeText=" Hi, I'm Akarshan Mishra, a"
               starText="Frontend, Backend and Flutter Developer"
-              afterText="based in Edmonton, 🍁CA. I am deeply passionate about creating
+              afterText="based in Edmonton, 🍁 CA. I am deeply passionate about creating
           applications that people enjoy using every day, and I strive to
           deliver high-quality products that meet the needs of users."
             />
-          </p>
+          </div>
 
-          <p className={`m-0  text-base md:text-lg opacity-100`}>
+          <div className={`m-0  text-base md:text-lg opacity-100`}>
             <StarText
               beforeText=" As a programmer, I have a strong command over a range of programming
               languages, including "
@@ -48,15 +48,15 @@ export default function AboutCard({ className = "" }: AboutCardProps) {
               always looking to expand my knowledge and explore new ideas and
               concepts related to computing, economics, or mathematics."
             />
-          </p>
+          </div>
 
-          <p className={`m-0  text-base md:text-lg opacity-100`}>
+          <div className={`m-0  text-base md:text-lg opacity-100`}>
             <StarText
               beforeText=" If you're interested in working with me or learning more about my
               skills and experience, please don't hesitate "
               starText=" to get in touch! "
             />
-          </p>
+          </div>
         </div>
       </div>
     </Tilt>
