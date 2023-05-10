@@ -31,7 +31,6 @@ export default function TechStackCard({ className = "" }: TechStackCardProps) {
     easing: "cubic-bezier(.03,.98,.52,.99)", // Easing on enter/exit.
   };
   const TAGS = [
-    "bash",
     "react",
     "typescript",
     "express",

@@ -1,5 +1,7 @@
 interface CodeBlockCardProps {
   // define the props for the CodeBlockCard component here
+  numProjects?: number;
+  text?: string;
 }
 
 declare global {
@@ -10,7 +12,10 @@ declare global {
   }
 }
 
-export default function CodeBlockCard() {
+export default function CodeBlockCard({
+  numProjects = 0,
+  text = "",
+}: CodeBlockCardProps) {
   return (
     <div className="card group h-full rounded-3xl flex flex-col gap-3 border transition-colors border-neutral-700 bg-neutral-800/30">
       <div className="w-full h-[30px] bg-[#343830] rounded-t-3xl flex flex-row justify-center items-center gap-3 px-5 ">
@@ -60,14 +65,12 @@ export default function CodeBlockCard() {
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <span>description</span>
         <span className="text-red-600">:</span>{" "}
-        <span className="text-cyan-600">
-          "I like building projects to learn new frameworks and concepts."
-        </span>
+        <span className="text-cyan-600">"{text}"</span>
         <span>,</span>
         <br />
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <span>numberOfProjects</span> <span className="text-cyan-600"> :</span>{" "}
-        <span className="text-cyan-600">10</span>
+        <span className="text-cyan-600">{numProjects}</span>
         <span>,</span>
         <br />
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

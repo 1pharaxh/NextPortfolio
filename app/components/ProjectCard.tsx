@@ -1,6 +1,14 @@
 interface ProjectCardProps {
   // define the props for the NameCard component here
-  text?: string;
+  projectArr?: Array<{
+    githubLink: string;
+    title: string;
+    objClass: string;
+    techStack: Array<string>;
+    description: Array<string>;
+    projectlink: string;
+    imageLink: string;
+  }>;
 }
 
 declare global {
@@ -25,43 +33,7 @@ interface SwiperStyle extends Properties {
   "--swiper-pagination-bullet-horizontal-gap"?: string;
 }
 
-const map1 = [
-  {
-    title: "Projects",
-    githubLink: "https://github.com/1pharaxh",
-    description: [
-      "Created a web app that allows users to create and share their own custom flashcards",
-      "Implemented a REST API using Node.js and Express.js to handle user authentication and flashcard creation",
-      "Designed a responsive UI using React.js and Tailwind CSS",
-    ],
-    techStack: ["react", "typescript", "nodejs", "express", "mongodb"],
-    imageLink: "/default.jpeg",
-  },
-  {
-    title: "Projects",
-    githubLink: "https://github.com/1pharaxh",
-    description: [
-      "Created a web app that allows users to create and share their own custom flashcards",
-      "Implemented a REST API using Node.js and Express.js to handle user authentication and flashcard creation",
-      "Designed a responsive UI using React.js and Tailwind CSS",
-    ],
-    techStack: ["react", "typescript", "nodejs", "express", "mongodb"],
-    imageLink: "/default.jpeg",
-  },
-  {
-    title: "Projects",
-    githubLink: "https://github.com/1pharaxh",
-    description: [
-      "Created a web app that allows users to create and share their own custom flashcards",
-      "Implemented a REST API using Node.js and Express.js to handle user authentication and flashcard creation",
-      "Designed a responsive UI using React.js and Tailwind CSS",
-    ],
-    techStack: ["react", "typescript", "nodejs", "express", "mongodb"],
-    imageLink: "/default.jpeg",
-  },
-];
-
-export default function ProjectCard() {
+export default function ProjectCard({ projectArr = [] }: ProjectCardProps) {
   return (
     <div className="w-full px-[1px]">
       <Swiper
@@ -74,10 +46,11 @@ export default function ProjectCard() {
             "--swiper-pagination-bullet-horizontal-gap": "6px",
           } as SwiperStyle
         }
+        speed={1200}
         spaceBetween={30}
         centeredSlides={true}
         autoplay={{
-          delay: 2500,
+          delay: 5000,
           disableOnInteraction: false,
         }}
         pagination={{
@@ -86,11 +59,13 @@ export default function ProjectCard() {
         modules={[Autoplay, Pagination]}
         className="mySwiper overflow-hidden"
       >
-        {map1.map((project, index) => (
+        {projectArr.map((project, index) => (
           <SwiperSlide key={index}>
             <Projects
               githubLink={project.githubLink}
               title={project.title}
+              objClass={project.objClass}
+              projectlink={project.projectlink}
               techStack={project.techStack}
               description={project.description}
               projectImage={project.imageLink}
