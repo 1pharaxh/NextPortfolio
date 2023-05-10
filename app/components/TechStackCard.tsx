@@ -53,10 +53,8 @@ export default function TechStackCard({ className = "" }: TechStackCardProps) {
     "vite",
     "gcp",
     "firebase",
-    "python",
     "androidstudio",
     "mysql",
-    "bash",
   ];
   const DURATION = 60000;
   const ROWS = 3;
@@ -74,7 +72,7 @@ export default function TechStackCard({ className = "" }: TechStackCardProps) {
     <Tilt options={defaultOptions}>
       <div
         className={
-          `group rounded-3xl h-full md:h-[600px] lg:h-[320px] flex-col flex items-center justify-center border  transition-colors border-neutral-700 bg-neutral-800/30 w-auto` +
+          `group rounded-3xl h-full md:h-[550px] lg:h-[320px] flex-col flex items-center justify-center border  transition-colors border-neutral-700 bg-neutral-800/30 w-auto` +
           className
         }
       >

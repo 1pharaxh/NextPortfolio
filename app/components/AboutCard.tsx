@@ -27,9 +27,11 @@ export default function AboutCard({ className = "" }: AboutCardProps) {
   };
   return (
     <Tilt options={defaultOptions}>
-      <div className="card group overflow-hidden flex flex-col px-4 py-4 justify-center items-start h-full md:h-[600px] lg:h-[320px]  rounded-3xl border transition-colors border-neutral-700 bg-neutral-800/30">
+      <div className="card group overflow-hidden flex flex-col px-4 py-4 justify-center items-start h-full md:h-[550px] lg:h-[320px]  rounded-3xl border transition-colors border-neutral-700 bg-neutral-800/30">
         <div className="flex flex-col gap-3">
-          <div className={`m-0  text-base md:text-lg opacity-100`}>
+          <div
+            className={`m-0  text-base md:text-lg lg:text-base xl:text-lg opacity-100`}
+          >
             <StarText
               beforeText=" Hi, I'm Akarshan Mishra, a"
               starText="Frontend, Backend and Flutter Developer"
@@ -39,7 +41,9 @@ export default function AboutCard({ className = "" }: AboutCardProps) {
             />
           </div>
 
-          <div className={`m-0  text-base md:text-lg opacity-100`}>
+          <div
+            className={`m-0  text-base md:text-lg lg:text-base xl:text-xl opacity-100`}
+          >
             <StarText
               beforeText=" As a programmer, I have a strong command over a range of programming
               languages, including "
@@ -50,7 +54,9 @@ export default function AboutCard({ className = "" }: AboutCardProps) {
             />
           </div>
 
-          <div className={`m-0  text-base md:text-lg opacity-100`}>
+          <div
+            className={`m-0  text-base md:text-lg lg:text-base xl:text-xl opacity-100`}
+          >
             <StarText
               beforeText=" If you're interested in working with me or learning more about my
               skills and experience, please don't hesitate "

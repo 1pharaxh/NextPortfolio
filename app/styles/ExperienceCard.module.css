@@ -188,7 +188,8 @@
 }
 
 .direction-r .flag:before {
-  padding-right: 10;
+
+  margin-left: 12%;
   left: 100%;
   width: 20px;
   height: 20px;

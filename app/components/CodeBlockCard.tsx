@@ -14,9 +14,12 @@ export default function CodeBlockCard() {
   return (
     <div className="card group h-full rounded-3xl flex flex-col gap-3 border transition-colors border-neutral-700 bg-neutral-800/30">
       <div className="w-full h-[30px] bg-[#343830] rounded-t-3xl flex flex-row justify-center items-center gap-3 px-5 ">
-        <div className="rounded-full w-[16px] h-[16px] bg-[#DA2828]"></div>
-        <div className="rounded-full w-[16px] h-[16px] bg-[#F3F800]"></div>
-        <div className="rounded-full w-[16px] h-[16px] bg-[#17F404]"></div>
+        <div className="flex flex-row gap-1">
+          <div className="rounded-full w-[14px] h-[14px] bg-[#DA2828]"></div>
+          <div className="rounded-full w-[14px] h-[14px] bg-[#F3F800]"></div>
+          <div className="rounded-full w-[14px] h-[14px] bg-[#17F404]"></div>
+        </div>
+
         <div className="w-full text-center text-base font-mono">
           Projects.tsx
         </div>
