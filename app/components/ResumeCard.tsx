@@ -26,7 +26,7 @@ export default function ResumeCard() {
         Check out my resume!
       </h2> */}
       <MarqueeText text="MY RESUME" />
-      <MarqueeText text="CHECK OUT MY RESUME" />
+      <MarqueeText text="मेरा रिज्यूमे" />
     </div>
   );
 }
