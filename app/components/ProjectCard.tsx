@@ -24,6 +24,43 @@ interface SwiperStyle extends Properties {
   "--swiper-pagination-bullet-size"?: string;
   "--swiper-pagination-bullet-horizontal-gap"?: string;
 }
+
+const map1 = [
+  {
+    title: "Projects",
+    githubLink: "https://github.com/1pharaxh",
+    description: [
+      "Created a web app that allows users to create and share their own custom flashcards",
+      "Implemented a REST API using Node.js and Express.js to handle user authentication and flashcard creation",
+      "Designed a responsive UI using React.js and Tailwind CSS",
+    ],
+    techStack: ["react", "typescript", "nodejs", "express", "mongodb"],
+    imageLink: "/default.jpeg",
+  },
+  {
+    title: "Projects",
+    githubLink: "https://github.com/1pharaxh",
+    description: [
+      "Created a web app that allows users to create and share their own custom flashcards",
+      "Implemented a REST API using Node.js and Express.js to handle user authentication and flashcard creation",
+      "Designed a responsive UI using React.js and Tailwind CSS",
+    ],
+    techStack: ["react", "typescript", "nodejs", "express", "mongodb"],
+    imageLink: "/default.jpeg",
+  },
+  {
+    title: "Projects",
+    githubLink: "https://github.com/1pharaxh",
+    description: [
+      "Created a web app that allows users to create and share their own custom flashcards",
+      "Implemented a REST API using Node.js and Express.js to handle user authentication and flashcard creation",
+      "Designed a responsive UI using React.js and Tailwind CSS",
+    ],
+    techStack: ["react", "typescript", "nodejs", "express", "mongodb"],
+    imageLink: "/default.jpeg",
+  },
+];
+
 export default function ProjectCard() {
   return (
     <div className="w-full px-[1px]">
@@ -49,17 +86,17 @@ export default function ProjectCard() {
         modules={[Autoplay, Pagination]}
         className="mySwiper overflow-hidden"
       >
-        <SwiperSlide>
-          <Projects />
-        </SwiperSlide>
-
-        <SwiperSlide>
-          <Projects />
-        </SwiperSlide>
-
-        <SwiperSlide>
-          <Projects />
-        </SwiperSlide>
+        {map1.map((project, index) => (
+          <SwiperSlide key={index}>
+            <Projects
+              githubLink={project.githubLink}
+              title={project.title}
+              techStack={project.techStack}
+              description={project.description}
+              projectImage={project.imageLink}
+            />
+          </SwiperSlide>
+        ))}
       </Swiper>
     </div>
   );

@@ -34,6 +34,7 @@ export default function TechStackCard({ className = "" }: TechStackCardProps) {
     "bash",
     "react",
     "typescript",
+    "express",
     "flutter",
     "nextjs",
     "tailwind",
