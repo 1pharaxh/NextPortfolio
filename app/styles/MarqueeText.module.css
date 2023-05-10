@@ -60,6 +60,12 @@
       -webkit-text-stroke: 3px var(--resume-text-color);
     }
   }
+
+  @media screen and (max-width: 768px) {
+    .marquee__inner span {
+      font-size: 3rem;
+    }
+  }
    .marquee .second {
     transform: translate3d(var(--final-initial), 0, 0);
     animation: marqueeTwo 10s linear infinite;
