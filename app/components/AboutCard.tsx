@@ -27,35 +27,35 @@ export default function AboutCard({ className = "" }: AboutCardProps) {
   };
   return (
     <Tilt options={defaultOptions}>
-      <div className="card group overflow-hidden h-full md:h-[600px] lg:h-[320px]  rounded-3xl border px-5 py-4 transition-colors border-neutral-700 bg-neutral-800/30">
-        <StarText text="Full Stack Web Developer" />
+      <div className="card group overflow-hidden flex flex-col px-4 py-4 justify-center items-start h-full md:h-[600px] lg:h-[320px]  rounded-3xl border transition-colors border-neutral-700 bg-neutral-800/30">
         <div className="flex flex-col gap-3">
-          <p className={`m-0  text-base md:text-sm opacity-100`}>
-            based in Edmonton, CA. I am deeply passionate about creating
-            applications that people enjoy using every day, and I strive to
-            deliver high-quality products that meet the needs of users.
+          <p className={`m-0  text-base md:text-lg opacity-100`}>
+            <StarText
+              beforeText=" Hi, I'm Akarshan Mishra, a"
+              starText="Frontend, Backend and Flutter Developer"
+              afterText="based in Edmonton, 🍁CA. I am deeply passionate about creating
+          applications that people enjoy using every day, and I strive to
+          deliver high-quality products that meet the needs of users."
+            />
           </p>
 
-          <p className={`m-0  text-base md:text-sm opacity-100`}>
-            As a programmer, I have a strong command over a range of programming
-            languages, including JavaScript, Python, C++, Java, and Dart. When
-            I'm not coding, I'm always looking to expand my knowledge and
-            explore new ideas and concepts related to computing, economics, or
-            mathematics.
+          <p className={`m-0  text-base md:text-lg opacity-100`}>
+            <StarText
+              beforeText=" As a programmer, I have a strong command over a range of programming
+              languages, including "
+              starText=" JavaScript, Python, C++, Java, and Dart."
+              afterText=" When I'm not coding, I'm
+              always looking to expand my knowledge and explore new ideas and
+              concepts related to computing, economics, or mathematics."
+            />
           </p>
 
-          <p className={`m-0  text-base md:text-sm opacity-100`}>
-            One of my current projects is XYZ - an open source, self-hosted
-            application designed to enable users to BYZ, specifically tailored
-            for the XUA-BDA community. I am excited about the potential impact
-            of this project and am committed to seeing it through to completion.
-          </p>
-
-          <p className={`m-0  text-base md:text-sm opacity-100`}>
-            Overall, I am a dedicated and hard-working developer who is always
-            looking for new challenges and opportunities to learn and grow. If
-            you're interested in working with me or learning more about my
-            skills and experience, please don't hesitate to get in touch!
+          <p className={`m-0  text-base md:text-lg opacity-100`}>
+            <StarText
+              beforeText=" If you're interested in working with me or learning more about my
+              skills and experience, please don't hesitate "
+              starText=" to get in touch! "
+            />
           </p>
         </div>
       </div>
