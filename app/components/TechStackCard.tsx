@@ -62,6 +62,7 @@ export default function TechStackCard({ className = "" }: TechStackCardProps) {
   const TAGS = [
     "react",
     "typescript",
+    "nextjs",
     "express",
     "flutter",
     "nextjs",

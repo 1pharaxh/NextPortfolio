@@ -8,6 +8,7 @@ import CodeBlockCard from "./components/CodeBlockCard";
 import ExperienceCard from "./components/ExperienceCard";
 import ProjectCard from "./components/ProjectCard";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 const projectArr = [
   {
@@ -185,9 +186,18 @@ export default function Home() {
         <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>Card Subheading</p>
       </div> */}
 
-      <div className="card text-center w-full left-0 top-0 flex justify-center border-b bg-gradient-to-b pb-6 pt-8 backdrop-blur-2xl border-neutral-800 bg-zinc-800/30 from-inherit static  rounded-3xl border  p-4 ">
-        Written in Typescript, React, NextJs and tailwindcss, deployed with
-        Vercel. Created by Akarshan Mishra.
+      <div className="card items-center flex-row w-full left-0 top-0 flex justify-center border-b bg-gradient-to-b pb-6 pt-8 backdrop-blur-2xl border-neutral-800 bg-zinc-800/30 from-inherit static  rounded-3xl border  p-4 ">
+        <span>
+          Written in Typescript, React, NextJs and tailwindcss, deployed with{" "}
+          <Image
+            src="/vercel.svg"
+            alt="Vercel Logo"
+            width={70}
+            height={70}
+            className="inline-block ml-1 mr-1"
+          />
+          . Created by <span className="font-semibold">Akarshan Mishra.</span>
+        </span>
       </div>
     </main>
   );
