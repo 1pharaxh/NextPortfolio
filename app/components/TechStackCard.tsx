@@ -19,6 +19,7 @@ declare global {
 }
 
 export default function TechStackCard({ className = "" }: TechStackCardProps) {
+  const year: number = new Date().getFullYear();
   const defaultOptions = {
     reverse: true, // reverse the tilt direction
     max: 15, // max tilt rotation (degrees)
@@ -29,6 +30,34 @@ export default function TechStackCard({ className = "" }: TechStackCardProps) {
     axis: null, // What axis should be disabled. Can be X or Y.
     reset: true, // If the tilt effect has to be reset on exit.
     easing: "cubic-bezier(.03,.98,.52,.99)", // Easing on enter/exit.
+  };
+  const TAGMAP: {
+    [key: string]: string;
+  } = {
+    react: "https://reactjs.org/",
+    typescript: "https://www.typescriptlang.org/",
+    express: "https://expressjs.com/",
+    flutter: "https://flutter.dev/",
+    nextjs: "https://nextjs.org/",
+    tailwind: "https://tailwindcss.com/",
+    git: "https://git-scm.com/",
+    nodejs: "https://nodejs.org/en/",
+    mongodb: "https://www.mongodb.com/",
+    java: "https://www.java.com/en/",
+    gradle: "https://gradle.org/",
+    github_logo: "https:github.com/",
+    vscode: "https://code.visualstudio.com/",
+    html: "https://html.com/",
+    css: "https://www.w3schools.com/css/",
+    javascript: "https://www.javascript.com/",
+    python: "https://www.python.org/",
+    cpp: "https://www.cplusplus.com/",
+    figma: "https://www.figma.com/",
+    vite: "https://vitejs.dev/",
+    gcp: "https://cloud.google.com/",
+    firebase: "https://firebase.google.com/",
+    androidstudio: "https://developer.android.com/studio",
+    mysql: "https://www.mysql.com/",
   };
   const TAGS = [
     "react",
@@ -92,10 +121,18 @@ export default function TechStackCard({ className = "" }: TechStackCardProps) {
                 {shuffle(TAGS, i)
                   .slice(0, TAGS_PER_ROW)
                   .map((tag) => (
-                    <div key={tag} className={style["tag"]}>
+                    <div
+                      key={tag}
+                      onClick={() => window.open(TAGMAP[tag])}
+                      className={
+                        style["tag"] +
+                        " hover:opacity-50 opacity-100 cursor-pointer transition-all"
+                      }
+                    >
                       <Image
                         src={`/${tag}.svg`}
                         alt={tag}
+                        className="h-[50px] w-[50px]"
                         width={40}
                         height={40}
                       />
@@ -105,7 +142,14 @@ export default function TechStackCard({ className = "" }: TechStackCardProps) {
                 {shuffle(TAGS, i)
                   .slice(0, TAGS_PER_ROW)
                   .map((tag) => (
-                    <div key={tag} className={style["tag"]}>
+                    <div
+                      key={tag}
+                      onClick={() => window.open(TAGMAP[tag])}
+                      className={
+                        style["tag"] +
+                        " hover:opacity-50 opacity-100 cursor-pointer transition-all"
+                      }
+                    >
                       <Image
                         src={`/${tag}.svg`}
                         alt={tag}
@@ -124,7 +168,7 @@ export default function TechStackCard({ className = "" }: TechStackCardProps) {
               <i className="fab fa-react" />
 
               <span className="font-extrabold text-xl">My TECH STACK </span>
-              <span className=" text-base opacity-50">in 2023</span>
+              <span className=" text-base opacity-50">in {year}</span>
             </h1>
           </div>
           <div className={style["fade"]} />
