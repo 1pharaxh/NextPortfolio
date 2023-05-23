@@ -39,7 +39,7 @@ export default function ResumeCard() {
         Check out my resume!
       </h2> */}
         <MarqueeText text="MY RESUME" />
-        <MarqueeText text="Mon CV" />
+        <MarqueeText text="Tap here!" />
       </div>
     </Tilt>
   );

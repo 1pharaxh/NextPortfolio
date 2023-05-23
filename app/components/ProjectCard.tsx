@@ -9,6 +9,7 @@ interface ProjectCardProps {
     projectlink: string;
     imageLink: string;
   }>;
+  hide?: boolean;
 }
 
 declare global {
@@ -33,9 +34,16 @@ interface SwiperStyle extends Properties {
   "--swiper-pagination-bullet-horizontal-gap"?: string;
 }
 
-export default function ProjectCard({ projectArr = [] }: ProjectCardProps) {
+export default function ProjectCard({
+  projectArr = [],
+  hide = false,
+}: ProjectCardProps) {
   return (
-    <div className="w-full px-[1px]">
+    <div
+      className={`w-full px-[1px]
+    ${hide ? "blur-lg" : ""}
+    `}
+    >
       <Swiper
         style={
           {

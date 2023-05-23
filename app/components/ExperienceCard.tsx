@@ -17,9 +17,11 @@ export default function ExperienceCard() {
     >
       <h2
         className={`mb-3 text-3xl md:text-5xl text-center md:text-start font-semibold`}
-        // make the outline appear
       >
-        Work Experience
+        Work{" "}
+        <span className="bg-gradient-to-br from-green-200 to-green-500 bg-clip-text font-bold text-transparent">
+          Experience
+        </span>
       </h2>
       <ul className={styles.timeline}>
         <li>

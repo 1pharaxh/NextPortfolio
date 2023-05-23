@@ -7,6 +7,7 @@ import ResumeCard from "./components/ResumeCard";
 import CodeBlockCard from "./components/CodeBlockCard";
 import ExperienceCard from "./components/ExperienceCard";
 import ProjectCard from "./components/ProjectCard";
+import SearchButton from "./components/SearchButton";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
@@ -102,7 +103,9 @@ const projectArr = [
   },
 ];
 export default function Home() {
+  const [modalOpen, setModalOpen] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
+
   // Hook to check if user has scrolled down
   useEffect(() => {
     function handleScroll() {
@@ -133,9 +136,12 @@ export default function Home() {
   return (
     <main
       onMouseMove={handleMouseMove}
-      className="flex min-h-screen gap-2 flex-col md:items-center p-4 md:p-16 "
+      className={`flex min-h-screen gap-2 flex-col md:items-center px-4 py-4 md:px-16 md:py-16 lg:px-32 lg:py-16 `}
     >
-      <div className="flex flex-col w-full items-center md:items-stretch md:flex-row gap-4 md:gap-2">
+      <div
+        className={`flex flex-col w-full items-center md:items-stretch md:flex-row gap-2 
+        ${modalOpen ? `blur-lg` : ``}`}
+      >
         <div className="flex-initial w-full md:w-4/6">
           <NameCard />
         </div>
@@ -143,14 +149,23 @@ export default function Home() {
           <SocialsCard />
         </div>
       </div>
+      <SearchButton modalOpen={modalOpen} setModal={setModalOpen} />
 
-      <div className={hasScrolled ? `hidden transition-all` : `scroll-downs `}>
+      <div
+        className={
+          hasScrolled || modalOpen ? `hidden transition-all` : `scroll-downs `
+        }
+      >
         <div className="mousey">
           <div className="scroller"></div>
         </div>
       </div>
 
-      <div className="flex flex-col w-full items-center md:items-stretch md:flex-row gap-4 md:gap-2">
+      <div
+        className={`flex flex-col w-full items-center md:items-stretch md:flex-row gap-4 md:gap-2
+      ${modalOpen ? `blur-lg` : ``}
+      `}
+      >
         <div className="flex-initial w-full md:w-2/6">
           <TechStackCard />
         </div>
@@ -159,7 +174,11 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="flex flex-col w-full items-center md:items-stretch md:flex-row gap-4 md:gap-2">
+      <div
+        className={`flex flex-col w-full items-center md:items-stretch md:flex-row gap-4 md:gap-2
+      ${modalOpen ? `blur-lg` : ``}
+      `}
+      >
         <div className="flex-initial w-full md:w-3/6 lg:w-4/6">
           <ExperienceCard />
         </div>
@@ -179,7 +198,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <ProjectCard projectArr={projectArr} />
+      <ProjectCard hide={modalOpen} projectArr={projectArr} />
 
       {/* <div className="card group rounded-3xl  border  px-5 py-4 transition-colors border-neutral-700 bg-neutral-800/30">
         <h2 className={`mb-3 text-2xl font-semibold`}>Card Heading</h2>
