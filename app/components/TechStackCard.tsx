@@ -65,7 +65,6 @@ export default function TechStackCard({ className = "" }: TechStackCardProps) {
     "nextjs",
     "express",
     "flutter",
-    "nextjs",
     "tailwind",
     "git",
     "nodejs",
