@@ -8,6 +8,7 @@ import CodeBlockCard from "./components/CodeBlockCard";
 import ExperienceCard from "./components/ExperienceCard";
 import ProjectCard from "./components/ProjectCard";
 import SearchButton from "./components/SearchButton";
+import MenuModal from "./components/MenuModal";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
@@ -138,34 +139,7 @@ export default function Home() {
       onMouseMove={handleMouseMove}
       className={`flex min-h-screen gap-2 flex-col md:items-center px-4 py-4 md:px-16 md:py-16 lg:px-32 lg:py-16 `}
     >
-      {/* SearchBox */}
-      <div
-        onClick={() => setModalOpen(false)}
-        className={`${
-          modalOpen === true ? "visible" : "hidden"
-        } w-full fixed z-[15] top-10 left-0  px-4 py-4 md:px-16 md:py-16 lg:px-32 lg:py-16 `}
-      >
-        <div
-          className={` group rounded-3xl  border  px-5 py-4 transition-colors border-neutral-700 bg-neutral-800/30`}
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>Card Heading</h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Card Subheading
-          </p>
-        </div>
-        <div
-          className={`  left-0 top-full  w-full flex-row items-center justify-between gap-2 px-3 py-4 text-sm flex`}
-        >
-          <div className="text-slate-300">
-            <strong className="mr-2 font-semibold text-slate-100">Esc</strong>{" "}
-            Close menu
-          </div>
-          <div className="text-slate-300">
-            <strong className="mr-2 font-semibold text-slate-100">Enter</strong>{" "}
-            Select option
-          </div>
-        </div>
-      </div>
+      <MenuModal modalOpen={modalOpen} />
 
       <div
         className={`flex flex-col w-full items-center md:items-stretch md:flex-row gap-2 
