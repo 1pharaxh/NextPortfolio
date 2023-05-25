@@ -136,12 +136,13 @@ export default function Home() {
   };
   return (
     <main
+      id="homeSection"
       onMouseMove={handleMouseMove}
       className={`flex min-h-screen gap-2 flex-col md:items-center px-4 py-4 md:px-16 md:py-16 lg:px-32 lg:py-16 `}
     >
-      <MenuModal modalOpen={modalOpen} />
-
-      <div
+      <MenuModal setModalOpen={setModalOpen} modalOpen={modalOpen} />
+      {/* Name and Socials  */}
+      <section
         className={`flex flex-col w-full items-center md:items-stretch md:flex-row gap-2 
         ${modalOpen ? `blur-lg` : ``}`}
       >
@@ -151,7 +152,7 @@ export default function Home() {
         <div className="flex-initial w-full md:w-2/6">
           <SocialsCard />
         </div>
-      </div>
+      </section>
       <SearchButton modalOpen={modalOpen} setModal={setModalOpen} />
 
       <div
@@ -164,7 +165,8 @@ export default function Home() {
         </div>
       </div>
 
-      <div
+      {/* Tech Stack and About Section  */}
+      <section
         className={`flex flex-col w-full items-center md:items-stretch md:flex-row gap-4 md:gap-2
       ${modalOpen ? `blur-lg` : ``}
       `}
@@ -175,9 +177,10 @@ export default function Home() {
         <div className="flex-initial w-full md:w-4/6">
           <AboutCard />
         </div>
-      </div>
-
-      <div
+      </section>
+      {/* Work Experience, Resume and Project Section  */}
+      <section
+        id="ResumeSection"
         className={`flex flex-col w-full items-center md:items-stretch md:flex-row gap-4 md:gap-2
       ${modalOpen ? `blur-lg` : ``}
       `}
@@ -186,12 +189,12 @@ export default function Home() {
           <ExperienceCard />
         </div>
 
-        <div className="flex-initial w-full md:w-3/6 lg:w-2/6">
+        <div className=" w-full md:w-3/6 lg:w-2/6">
           <div className="flex flex-col h-full gap-2 justify-between">
-            <div className="flex-initial ">
+            <div className="flex-grow ">
               <ResumeCard />
             </div>
-            <div className="flex-initial ">
+            <div className="flex-grow ">
               <CodeBlockCard
                 numProjects={projectArr.length}
                 text="
@@ -200,7 +203,9 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </div>
+      </section>
+
+      {/* Project section  */}
       <ProjectCard hide={modalOpen} projectArr={projectArr} />
 
       {/* <div className="card group rounded-3xl  border  px-5 py-4 transition-colors border-neutral-700 bg-neutral-800/30">

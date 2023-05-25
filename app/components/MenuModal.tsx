@@ -1,5 +1,8 @@
+import { useState } from "react";
+
 interface MenuModalProps {
   modalOpen: boolean;
+  setModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 declare global {
@@ -10,11 +13,20 @@ declare global {
   }
 }
 
-export default function MenuModal({ modalOpen }: MenuModalProps) {
+export default function MenuModal({ modalOpen, setModalOpen }: MenuModalProps) {
+  const [animationFinished, setAnimationFinished] = useState(true);
+
   return (
     <div
+      onAnimationEnd={() => {
+        setAnimationFinished(!animationFinished);
+      }}
+      style={{
+        animation: modalOpen ? "fadeIn 0.5s" : "fadeOut 0.5s",
+        animationFillMode: "forwards",
+      }}
       className={`${
-        modalOpen === true ? "visible" : "hidden"
+        modalOpen || !animationFinished ? "visible" : "hidden"
       } w-full fixed z-[15] top-10 left-0  px-4  md:px-16  lg:px-32  `}
     >
       <div
@@ -23,7 +35,7 @@ export default function MenuModal({ modalOpen }: MenuModalProps) {
         <input
           className="hover:bg-slate-500 px-6 py-3 h-14 border-b border-slate-700 
           w-full bg-transparent outline-none placeholder:text-slate-500 
-          focus-within:placeholder:text-slate-300 hover:text-slate-100 rounded-t-xl"
+          focus-within:placeholder:text-slate-50 hover:placeholder:text-slate-100 rounded-t-xl"
           placeholder="Search for actions and pages..."
           autoComplete="off"
           autoCorrect="off"
@@ -47,8 +59,51 @@ export default function MenuModal({ modalOpen }: MenuModalProps) {
                 <h2 className=" px-6 pb-2 text-xs text-[0.6875rem] text-slate-400 font-semibold tracking-widest uppercase">
                   Sections
                 </h2>
+
+                {/* ROW  */}
                 <div
-                  className="hover:bg-slate-500 px-4 mx-2 py-2  border 
+                  onClick={() => {
+                    document.getElementById("homeSection")?.scrollIntoView({
+                      behavior: "smooth",
+                      block: "start",
+                    });
+                    setModalOpen(false);
+                  }}
+                  className="hover:bg-slate-500 cursor-pointer px-4 mx-2 py-2  border 
+                border-transparent mb-px 
+                rounded-lg text-slate-200 text-sm  font-medium 
+                "
+                >
+                  <div className="flex flex-row items-center cursor-pointer rounded-xl ">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="-ml-px mr-3 h-4 w-4"
+                    >
+                      <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path>
+                      <line x1="4" y1="22" x2="4" y2="15"></line>
+                    </svg>
+                    Home
+                  </div>
+                </div>
+
+                {/* ROW  */}
+                <div
+                  onClick={() => {
+                    document.getElementById("ResumeSection")?.scrollIntoView({
+                      behavior: "smooth",
+                      block: "start",
+                    });
+                    setModalOpen(false);
+                  }}
+                  className="hover:bg-slate-500 cursor-pointer px-4 mx-2 py-2  border 
                 border-transparent mb-px 
                 rounded-lg text-slate-200 text-sm  font-medium 
                 "
@@ -74,6 +129,13 @@ export default function MenuModal({ modalOpen }: MenuModalProps) {
                 </div>
                 {/* ROW */}
                 <div
+                  onClick={() => {
+                    document.getElementById("ResumeSection")?.scrollIntoView({
+                      behavior: "smooth",
+                      block: "start",
+                    });
+                    setModalOpen(false);
+                  }}
                   className="hover:bg-slate-500 px-4 mx-2 py-2  border 
                 border-transparent mb-px 
                 rounded-lg text-slate-200 text-sm  font-medium 
@@ -102,6 +164,13 @@ export default function MenuModal({ modalOpen }: MenuModalProps) {
               </div>
               {/* ROW */}
               <div
+                onClick={() => {
+                  document.getElementById("projectsCards")?.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                  });
+                  setModalOpen(false);
+                }}
                 className="hover:bg-slate-500 px-4 mx-2 py-2  border 
                 border-transparent mb-px 
                 rounded-lg text-slate-200 text-sm  font-medium 

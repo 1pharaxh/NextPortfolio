@@ -40,6 +40,7 @@ export default function ProjectCard({
 }: ProjectCardProps) {
   return (
     <div
+      id="projectsCards"
       className={`w-full px-[1px]
     ${hide ? "blur-lg" : ""}
     `}
