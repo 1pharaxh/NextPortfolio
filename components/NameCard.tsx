@@ -1,4 +1,4 @@
-import style from "../styles/NameCard.module.css";
+import style from "@/styles/NameCard.module.css";
 import { Tilt } from "react-tilt";
 
 import Image from "next/image";

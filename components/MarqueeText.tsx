@@ -1,4 +1,4 @@
-import style from "../styles/MarqueeText.module.css";
+import style from "@/styles/MarqueeText.module.css";
 interface MarqueeTextProps {
   // define the props for the NameCard component here
   text?: string;

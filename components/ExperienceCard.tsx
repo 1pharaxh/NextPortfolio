@@ -1,4 +1,4 @@
-import styles from "../styles/ExperienceCard.module.css";
+import styles from "@/styles/ExperienceCard.module.css";
 interface ExperienceCardProps {}
 
 declare global {

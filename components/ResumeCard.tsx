@@ -1,5 +1,5 @@
 import { Tilt } from "react-tilt";
-import MarqueeText from "./MarqueeText";
+import MarqueeText from "@/components/MarqueeText";
 interface ResumeCardProps {
   // define the props for the ResumeCard component here
 }

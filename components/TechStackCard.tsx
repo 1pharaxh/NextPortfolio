@@ -1,7 +1,7 @@
 import { CSSProperties } from "react";
 import { Tilt } from "react-tilt";
 
-import style from "../styles/TechStackCard.module.css";
+import style from "@/styles/TechStackCard.module.css";
 import Image from "next/image";
 import seedrandom from "seedrandom";
 

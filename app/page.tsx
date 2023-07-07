@@ -1,14 +1,14 @@
 "use client";
-import NameCard from "./components/NameCard";
-import SocialsCard from "./components/SocialsCard";
-import TechStackCard from "./components/TechStackCard";
-import AboutCard from "./components/AboutCard";
-import ResumeCard from "./components/ResumeCard";
-import CodeBlockCard from "./components/CodeBlockCard";
-import ExperienceCard from "./components/ExperienceCard";
-import ProjectCard from "./components/ProjectCard";
-import SearchButton from "./components/SearchButton";
-import MenuModal from "./components/MenuModal";
+import NameCard from "@/components/NameCard";
+import SocialsCard from "@/components/SocialsCard";
+import TechStackCard from "@/components/TechStackCard";
+import AboutCard from "@/components/AboutCard";
+import ResumeCard from "@/components/ResumeCard";
+import CodeBlockCard from "@/components/CodeBlockCard";
+import ExperienceCard from "@/components/ExperienceCard";
+import ProjectCard from "@/components/ProjectCard";
+import SearchButton from "@/components/SearchButton";
+import MenuModal from "@/components/MenuModal";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
@@ -140,7 +140,11 @@ export default function Home() {
       onMouseMove={handleMouseMove}
       className={`flex min-h-screen gap-2 flex-col md:items-center px-4 py-4 md:px-16 md:py-16 lg:px-32 lg:py-16 `}
     >
-      <MenuModal setModalOpen={setModalOpen} modalOpen={modalOpen} />
+      <MenuModal
+        className="dark"
+        modalOpen={modalOpen}
+        setModalOpen={setModalOpen}
+      />
       {/* Name and Socials  */}
       <section
         className={`flex flex-col w-full items-center md:items-stretch md:flex-row gap-2 
