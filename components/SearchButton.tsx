@@ -1,44 +1,75 @@
+"use client";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-interface SearchButtonProps {
-  // React useState hook to set the modal state define its type
-  setModal: React.Dispatch<React.SetStateAction<boolean>>;
-  modalOpen: boolean;
-}
+import { useEffect, useState } from "react";
+import MenuModal from "./MenuModal";
 
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      SearchButton: SearchButtonProps;
+export default function SearchButton() {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [hasScrolled, setHasScrolled] = useState(false);
+
+  // Hook to check if user has scrolled down
+  useEffect(() => {
+    function handleScroll() {
+      if (window.scrollY > 0) {
+        setHasScrolled(true);
+      } else {
+        setHasScrolled(false);
+      }
     }
-  }
-}
-export default function SearchButton({
-  setModal,
-  modalOpen = false,
-}: SearchButtonProps) {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   return (
     <>
+      <div
+        className="absolute z-[999] min-w-[calc(100%-2rem)] md:min-w-[calc(100%-4rem)]  
+        lg:min-w-[calc(100%-16rem)]  
+      translate-y-[-100%] top-1/3
+      "
+      >
+        <MenuModal
+          className="dark"
+          modalOpen={modalOpen}
+          setModalOpen={setModalOpen}
+        />
+      </div>
+      {/* MAKE THIS DIV COVER THE WHOLE PAGE  */}
+      <div
+        className={`${
+          modalOpen
+            ? `visible z-[200] blur-md fixed top-0 left-0 w-full h-full backdrop-filter backdrop-blur-lg `
+            : `hidden`
+        }}`}
+        onClick={() => setModalOpen(false)}
+      ></div>
       {/* TOOL TIP */}
       {modalOpen ? (
         <div
-          onClick={() => setModal(false)}
-          className="fixed top-0 left-0 w-full h-full z-[12] transition-all text-7xl"
+          onClick={() => setModalOpen(false)}
+          className="fixed top-0 left-0 w-full h-full transition-all text-7xl"
         ></div>
       ) : null}
       <TooltipProvider>
         <Tooltip>
           <TooltipTrigger className="dark" asChild>
             <button
-              onClick={() => setModal(true)}
-              className={`searchBTN group z-10 fixed bottom-9 right-9 -m-2 flex aspect-square 
+              onClick={() => {
+                setModalOpen(true);
+                // scroll to top with behavior smooth
+                window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+              }}
+              className={`searchBTN group fixed bottom-9 right-9 -m-2 flex aspect-square 
       h-14 items-center justify-center rounded-full border border-green-900/40 
       bg-green-900/30 text-green-200 shadow-xl shadow-black/50 backdrop-blur 
-      transition-all hover:border-green-500 hover:bg-green-700 hover:text-slate-0 
+      transition-all hover:border-green-500 hover:bg-green-700 hover:text-slate-0 z-[100]
       sm:bottom-12 sm:right-12 sm:h-16
        ${modalOpen ? `blur-lg` : ``}
       `}
@@ -66,6 +97,16 @@ export default function SearchButton({
           </TooltipContent>
         </Tooltip>
       </TooltipProvider>
+
+      <div
+        className={
+          hasScrolled || modalOpen ? `hidden transition-all` : `scroll-downs `
+        }
+      >
+        <div className="mousey">
+          <div className="scroller"></div>
+        </div>
+      </div>
     </>
   );
 }

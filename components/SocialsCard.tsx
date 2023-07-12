@@ -1,19 +1,8 @@
+"use client";
+import { cn } from "@/lib/utils";
 import Image from "next/image";
 import GitHubCalendar from "react-github-calendar";
 import { Tilt } from "react-tilt";
-
-interface SocialsCardProps {
-  // define the props for the SocialsCard component here
-  className?: string;
-}
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      SocialsCard: SocialsCardProps;
-    }
-  }
-}
 
 interface Activity {
   date: string;
@@ -21,18 +10,7 @@ interface Activity {
   level: 0 | 1 | 2 | 3 | 4;
 }
 
-export default function SocialsCard({ className = "" }: SocialsCardProps) {
-  const defaultOptions = {
-    reverse: true, // reverse the tilt direction
-    max: 15, // max tilt rotation (degrees)
-    perspective: 1500, // Transform perspective, the lower the more extreme the tilt gets.
-    scale: 1, // 2 = 200%, 1.5 = 150%, etc..
-    speed: 1500, // Speed of the enter/exit transition
-    transition: true, // Set a transition on enter/exit.
-    axis: null, // What axis should be disabled. Can be X or Y.
-    reset: true, // If the tilt effect has to be reset on exit.
-    easing: "cubic-bezier(.03,.98,.52,.99)", // Easing on enter/exit.
-  };
+export default function SocialsCard({ className }: { className?: string }) {
   const selectLastHalfYear = (
     contributions: Array<Activity>
   ): Array<Activity> => {
@@ -52,18 +30,20 @@ export default function SocialsCard({ className = "" }: SocialsCardProps) {
     });
   };
   return (
-    <Tilt options={defaultOptions}>
+    <>
       <div
-        className={
-          "h-48 md:h-48 rounded-3xl border flex flex-row items-center transition-colors border-neutral-700 overflow-hidden " +
+        className={cn(
+          `h-48 md:h-48   flex flex-row items-center 
+           overflow-hidden`,
           className
-        }
+        )}
       >
         <div
           onClick={() => window.open("https://github.com/1pharaxh", "_blank")}
-          className="h-full w-2/4 hover:w-3/4 bg-black flex flex-col justify-center items-center rounded-tl-3xl rounded-bl-3xl cursor-pointer transition-all duration-300 group"
+          className="h-full w-2/4 hover:w-3/4 bg-black flex flex-col justify-center items-center 
+          rounded-tl-3xl rounded-bl-3xl cursor-pointer transition-all duration-300 group/socials-card"
         >
-          <div className="group-hover:opacity-0 group-hover:h-0 transition-all duration-300 justify-center flex flex-col gap-3 h-full w-full">
+          <div className="group-hover/socials-card:opacity-0 group-hover/socials-card:h-0 transition-all duration-300 justify-center flex flex-col gap-3 h-full w-full">
             <Image
               className="h-[100px] md:h-[70px]"
               src="/github.svg"
@@ -78,7 +58,7 @@ export default function SocialsCard({ className = "" }: SocialsCardProps) {
               @1pharaxh
             </h1>
           </div>
-          <div className="opacity-0 group-hover:opacity-100 transition-all duration-300 h-0 group-hover:h-auto">
+          <div className="opacity-0 group-hover/socials-card:opacity-100 transition-all duration-300 h-0 group-hover/socials-card:h-auto">
             <GitHubCalendar
               loading={false}
               year={2023}
@@ -96,7 +76,7 @@ export default function SocialsCard({ className = "" }: SocialsCardProps) {
           className="group h-full px-2 w-2/4 hover:w-3/4 bg-blue-700 flex flex-col gap-3 justify-center rounded-tr-3xl rounded-br-3xl cursor-pointer transition-all duration-300"
         >
           <Image
-            className="h-[100px] md:h-[70px] group-hover:rotate-3 group-hover:scale-110 transition-all duration-500 ease-in-out z-10"
+            className="h-[100px] md:h-[70px] group-hover/socials-card:rotate-3 group-hover/socials-card:scale-110 transition-all duration-500 ease-in-out z-10"
             src="/linkedin.svg"
             alt="github_logo"
             width="0"
@@ -110,6 +90,6 @@ export default function SocialsCard({ className = "" }: SocialsCardProps) {
           </h1>
         </div>
       </div>
-    </Tilt>
+    </>
   );
 }

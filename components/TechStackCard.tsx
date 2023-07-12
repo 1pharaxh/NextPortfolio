@@ -1,36 +1,18 @@
+"use client";
 import { CSSProperties } from "react";
-import { Tilt } from "react-tilt";
 
 import style from "@/styles/TechStackCard.module.css";
 import Image from "next/image";
 import seedrandom from "seedrandom";
+import { cn } from "@/lib/utils";
 
-interface TechStackCardProps {
-  // define the props for the NameCard component here
+export default function TechStackCard({
+  className = "",
+}: {
   className?: string;
-}
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      TechStackCard: TechStackCardProps;
-    }
-  }
-}
-
-export default function TechStackCard({ className = "" }: TechStackCardProps) {
+}) {
   const year: number = new Date().getFullYear();
-  const defaultOptions = {
-    reverse: true, // reverse the tilt direction
-    max: 15, // max tilt rotation (degrees)
-    perspective: 1500, // Transform perspective, the lower the more extreme the tilt gets.
-    scale: 1, // 2 = 200%, 1.5 = 150%, etc..
-    speed: 1500, // Speed of the enter/exit transition
-    transition: true, // Set a transition on enter/exit.
-    axis: null, // What axis should be disabled. Can be X or Y.
-    reset: true, // If the tilt effect has to be reset on exit.
-    easing: "cubic-bezier(.03,.98,.52,.99)", // Easing on enter/exit.
-  };
+
   const TAGMAP: {
     [key: string]: string;
   } = {
@@ -98,12 +80,12 @@ export default function TechStackCard({ className = "" }: TechStackCardProps) {
     return [...arr].sort(() => rng() - 0.523); // shuffle the array using the random number generator
   };
   return (
-    <Tilt options={defaultOptions}>
+    <>
       <div
-        className={
-          `group rounded-3xl h-full md:h-[550px] lg:h-[320px] flex-col flex items-center justify-center border  transition-colors border-neutral-700 bg-neutral-800/30 w-auto` +
+        className={cn(
+          `group min-h-full min-w-full  flex-col flex items-center justify-center `,
           className
-        }
+        )}
       >
         <div className={style["tag-list"]}>
           {[...new Array(ROWS)].map((_, i) => (
@@ -174,6 +156,6 @@ export default function TechStackCard({ className = "" }: TechStackCardProps) {
           <div className={style["fade"]} />
         </div>
       </div>
-    </Tilt>
+    </>
   );
 }

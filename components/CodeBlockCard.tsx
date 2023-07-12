@@ -4,23 +4,12 @@ interface CodeBlockCardProps {
   text?: string;
 }
 
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      CodeBlockCard: CodeBlockCardProps;
-    }
-  }
-}
-
 export default function CodeBlockCard({
   numProjects = 0,
   text = "",
 }: CodeBlockCardProps) {
   return (
-    <div
-      className="card group h-full rounded-3xl flex flex-col gap-3 border 
-    transition-colors border-neutral-700 bg-neutral-800/30"
-    >
+    <div className="  h-full rounded-3xl flex flex-col gap-3 ">
       <div
         className="w-full h-[30px] bg-[#343830] rounded-t-3xl flex flex-row 
       justify-center items-center gap-3 px-5 "
@@ -35,7 +24,7 @@ export default function CodeBlockCard({
           Projects.tsx
         </div>
       </div>
-      <div className="font-mono px-5">
+      <div className="font-mono px-5 bg-transparent">
         <span className="text-red-600">import</span>{" "}
         <span className="text-cyan-600">React</span>{" "}
         <span className="text-red-600">from</span>{" "}

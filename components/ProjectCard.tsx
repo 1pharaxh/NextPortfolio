@@ -1,3 +1,5 @@
+"use client";
+
 interface ProjectCardProps {
   // define the props for the NameCard component here
   projectArr?: Array<{

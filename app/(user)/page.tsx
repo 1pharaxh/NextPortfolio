@@ -1,4 +1,3 @@
-"use client";
 import NameCard from "@/components/NameCard";
 import SocialsCard from "@/components/SocialsCard";
 import TechStackCard from "@/components/TechStackCard";
@@ -8,9 +7,8 @@ import CodeBlockCard from "@/components/CodeBlockCard";
 import ExperienceCard from "@/components/ExperienceCard";
 import ProjectCard from "@/components/ProjectCard";
 import SearchButton from "@/components/SearchButton";
-import MenuModal from "@/components/MenuModal";
-import { useEffect, useState } from "react";
 import Image from "next/image";
+import { Spotlight, SpotlightCard } from "@/components/ui/card";
 
 const projectArr = [
   {
@@ -104,132 +102,85 @@ const projectArr = [
   },
 ];
 export default function Home() {
-  const [modalOpen, setModalOpen] = useState(false);
-  const [hasScrolled, setHasScrolled] = useState(false);
-
-  // Hook to check if user has scrolled down
-  useEffect(() => {
-    function handleScroll() {
-      if (window.scrollY > 0) {
-        setHasScrolled(true);
-      } else {
-        setHasScrolled(false);
-      }
-    }
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    const cards = Array.from(document.getElementsByClassName("card"));
-    for (let card of cards) {
-      const cardElement = card as HTMLDivElement;
-      const rect = cardElement.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      cardElement.style.setProperty("--mouse-x", `${x}px`);
-      cardElement.style.setProperty("--mouse-y", `${y}px`);
-    }
-  };
   return (
     <main
       id="homeSection"
-      onMouseMove={handleMouseMove}
       className={`flex min-h-screen gap-2 flex-col md:items-center px-4 py-4 md:px-16 md:py-16 lg:px-32 lg:py-16 `}
     >
-      <MenuModal
-        className="dark"
-        modalOpen={modalOpen}
-        setModalOpen={setModalOpen}
-      />
-      {/* Name and Socials  */}
-      <section
-        className={`flex flex-col w-full items-center md:items-stretch md:flex-row gap-2 
-        ${modalOpen ? `blur-lg` : ``}`}
-      >
-        <div className="flex-initial w-full md:w-4/6">
-          <NameCard />
-        </div>
-        <div className="flex-initial w-full md:w-2/6">
-          <SocialsCard />
-        </div>
-      </section>
-      <SearchButton modalOpen={modalOpen} setModal={setModalOpen} />
+      {/* <Spotlight className="max-w-sm mx-auto grid gap-2 lg:grid-cols-3 items-start lg:max-w-none group">
 
-      <div
-        className={
-          hasScrolled || modalOpen ? `hidden transition-all` : `scroll-downs `
-        }
-      >
-        <div className="mousey">
-          <div className="scroller"></div>
-        </div>
-      </div>
-
-      {/* Tech Stack and About Section  */}
-      <section
-        className={`flex flex-col w-full items-center md:items-stretch md:flex-row gap-4 md:gap-2
-      ${modalOpen ? `blur-lg` : ``}
-      `}
-      >
-        <div className="flex-initial w-full md:w-2/6">
-          <TechStackCard />
-        </div>
-        <div className="flex-initial w-full md:w-4/6">
-          <AboutCard />
-        </div>
-      </section>
-      {/* Work Experience, Resume and Project Section  */}
-      <section
-        id="ResumeSection"
-        className={`flex flex-col w-full items-center md:items-stretch md:flex-row gap-4 md:gap-2
-      ${modalOpen ? `blur-lg` : ``}
-      `}
-      >
-        <div className="flex-initial w-full md:w-3/6 lg:w-4/6">
-          <ExperienceCard />
-        </div>
-
-        <div className=" w-full md:w-3/6 lg:w-2/6">
-          <div className="flex flex-col h-full gap-2 justify-between">
-            <div className="flex-grow ">
-              <ResumeCard />
-            </div>
-            <div className="flex-grow ">
-              <CodeBlockCard
-                numProjects={projectArr.length}
-                text="
-              I love to code and I'm always working on something new. Here are some of my projects:"
-              />
-            </div>
+      </Spotlight> */}
+      <SearchButton />
+      <Spotlight className="flex flex-col w-full items-center md:items-stretch gap-2 group/card">
+        {/* Name and Socials  */}
+        <div className="flex flex-col md:flex-row w-full gap-2">
+          <div className="flex-initial w-full md:w-4/6">
+            <SpotlightCard gradient={false}>
+              <NameCard />
+            </SpotlightCard>
+          </div>
+          <div className="flex-initial w-full md:w-2/6">
+            <SpotlightCard gradient={false} tilt={false}>
+              <SocialsCard />
+            </SpotlightCard>
           </div>
         </div>
-      </section>
+        {/* About and Tech Stack */}
+        <div className="flex flex-col lg:flex-row w-full gap-2">
+          <div className="flex-initial w-full lg:w-2/6 ">
+            <SpotlightCard gradient={false}>
+              <TechStackCard className="flex-grow" />
+            </SpotlightCard>
+          </div>
+          <div className="flex-initial w-full lg:w-4/6">
+            <SpotlightCard gradient={true} tilt={false}>
+              <AboutCard />
+            </SpotlightCard>
+          </div>
+        </div>
+        {/* Work Experience, Resume and Project Section  */}
+        <div className="flex flex-col md:flex-row w-full gap-2">
+          <div className="flex-initial w-full md:w-3/6 lg:w-4/6">
+            <SpotlightCard gradient={true} tilt={false}>
+              <ExperienceCard />
+            </SpotlightCard>
+          </div>
+          <div className=" w-full md:w-3/6 lg:w-2/6">
+            <Spotlight className="flex flex-col h-full gap-2 justify-between group/card">
+              <SpotlightCard className="flex-grow " gradient={true}>
+                <ResumeCard />
+              </SpotlightCard>
+              <SpotlightCard
+                className="flex-grow "
+                gradient={true}
+                tilt={false}
+              >
+                <CodeBlockCard
+                  numProjects={projectArr.length}
+                  text="
+              I love to code and I'm always working on something new. Here are some of my projects:"
+                />
+              </SpotlightCard>
+            </Spotlight>
+          </div>
+        </div>
+        {/* Project section  */}
 
-      {/* Project section  */}
-      <ProjectCard hide={modalOpen} projectArr={projectArr} />
-
-      {/* <div className="card group rounded-3xl  border  px-5 py-4 transition-colors border-neutral-700 bg-neutral-800/30">
-        <h2 className={`mb-3 text-2xl font-semibold`}>Card Heading</h2>
-        <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>Card Subheading</p>
-      </div> */}
-
-      <div className="card items-center flex-row w-full left-0 top-0 flex justify-center border-b bg-gradient-to-b pb-6 pt-8 backdrop-blur-2xl border-neutral-800 bg-zinc-800/30 from-inherit static  rounded-3xl border  p-4 ">
-        <span>
-          Written in Typescript, React, NextJs and tailwindcss, deployed with{" "}
-          <Image
-            src="/vercel.svg"
-            alt="Vercel Logo"
-            width={70}
-            height={70}
-            className="inline-block ml-1 mr-1"
-          />
-          . Created by <span className="font-semibold">Akarshan Mishra.</span>
-        </span>
-      </div>
+        <ProjectCard projectArr={projectArr} />
+        <SpotlightCard gradient={false} tilt={false}>
+          <div className="p-4 ">
+            Written in Typescript, React, NextJs and tailwindcss, deployed with{" "}
+            <Image
+              src="/vercel.svg"
+              alt="Vercel Logo"
+              width={70}
+              height={70}
+              className="inline-block ml-1 mr-1"
+            />
+            . Created by <span className="font-semibold">Akarshan Mishra.</span>
+          </div>
+        </SpotlightCard>
+      </Spotlight>
     </main>
   );
 }

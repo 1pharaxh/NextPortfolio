@@ -1,19 +1,6 @@
+"use client";
 import { useEffect, useRef } from "react";
 
-interface StarTextdProps {
-  // define the props for the SocialsCard component here
-  starText?: string;
-  beforeText?: string;
-  afterText?: string;
-}
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      StarText: StarTextdProps;
-    }
-  }
-}
 const rand = (min: number, max: number) =>
   Math.floor(Math.random() * (max - min + 1)) + min;
 
@@ -34,11 +21,7 @@ const animate = (star: Element) => {
 
   star.style.animation = "";
 };
-export default function StarText({
-  starText = "",
-  beforeText = "",
-  afterText = "",
-}: StarTextdProps) {
+export default function StarText({ children }: { children: React.ReactNode }) {
   const starRef = useRef(null);
 
   let index = 0,
@@ -55,8 +38,7 @@ export default function StarText({
     }
   }, []);
   return (
-    <h1 className="">
-      {beforeText}{" "}
+    <h1 className="inline-block px-1">
       <span className={"magic"}>
         <span ref={starRef} className={"magic-star"}>
           <svg viewBox="0 0 512 512">
@@ -78,10 +60,9 @@ export default function StarText({
             "magic-text md:text-lg lg:text-base xl:text-xl font-semibold"
           }
         >
-          {starText}
+          {children}
         </span>
-      </span>{" "}
-      {afterText}
+      </span>
     </h1>
   );
 }

@@ -78,10 +78,6 @@
 }
 
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 :root {
   --resume-text-color: #EDEEE9;
 
@@ -92,8 +88,10 @@
 
   /* Default Colors used by Tailwind CSS  */
   --foreground-rgb: 255, 255, 255;
-  --background-start-rgb: 0, 0, 0;
-  --background-end-rgb: 21,35,49;
+  --techstack-card-fade: rgb(23 37 84 / 0.5);
+  --background-start-rgb: theme('colors.blue.950');
+  --background-via-rgb: theme('colors.indigo.950');
+  --background-end-rgb: theme('colors.slate.950');
       /* COLORS FOR TEXT GRADIENT */
       --bg: rgb(38 38 38 / 0);
       --clr-1: #78ddff;
@@ -105,21 +103,22 @@
       --ls: clamp(-1.75px, -0.25vw, -2.5px);
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 21,35,49;
   }
-}
+} */
 
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
     180deg,
       transparent,
-      rgb(var(--background-end-rgb)) 0%,
-      rgb(var(--background-start-rgb)) 95.32%
+      var(--background-end-rgb) 0%,
+      var(--background-via-rgb) 50%,
+      var(--background-start-rgb) 95%
 
     );
 }
@@ -255,64 +254,12 @@ h1 > .magic > .magic-text {
   background-size: 200%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  white-space: nowrap;
-}
-
-/* -- YouTube Link Styles -- */
-
-#source-link {
-  top: 60px;
-}
-
-#source-link > i {
-  color: rgb(94, 106, 210);
-}
-
-#yt-link {  
-  top: 10px;
-}
-
-#yt-link > i {
-  color: rgb(239, 83, 80);
-}
-
-.meta-link {
-  align-items: center;
-  backdrop-filter: blur(3px);
-  background-color: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 6px;
-  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
-  cursor: pointer;  
-  display: inline-flex;
-  gap: 5px;
-  left: 10px;
-  padding: 10px 20px;
-  position: fixed;
-  text-decoration: none;
-  transition: background-color 600ms, border-color 600ms;
-  z-index: 10000;
-}
-
-.meta-link:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.meta-link > i, .meta-link > span {
-  height: 20px;
-  line-height: 20px;
-}
-
-.meta-link > span {
-  color: white;
-  font-family: "Rubik", sans-serif;
-  transition: color 600ms;
+  white-space: normal;
 }
 
 /* Mouse scroller  */
 .scroll-downs {
-  z-index: 5;
+  z-index: 120;
   position: absolute;
   left: 2.25rem;
   transition-property: all;

@@ -1,18 +1,10 @@
 import styles from "@/styles/ExperienceCard.module.css";
-interface ExperienceCardProps {}
 
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      ExperienceCard: ExperienceCardProps;
-    }
-  }
-}
 export default function ExperienceCard() {
   return (
     <div
       className={
-        "card group rounded-3xl w-auto flex flex-col h-full items-center justify-center  border  px-5 py-4 transition-colors border-neutral-700 bg-neutral-800/30"
+        "rounded-3xl w-auto flex flex-col h-full items-center justify-center  px-5 py-4 "
       }
     >
       <h2
