@@ -112,7 +112,7 @@ export function SpotlightCard({
   children,
   className = "",
   gradient,
-  tilt = false,
+  tilt = true,
 }: SpotlightCardProps) {
   return tilt ? (
     <Tilt options={defaultOptions}>
