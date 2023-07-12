@@ -30,7 +30,7 @@ export default function SpotlightCard({
     return (
       <div
         className={cn(
-          `relative h-full bg-slate-800 rounded-3xl p-px `,
+          `relative h-full bg-slate-800 rounded-3xl p-px`,
           className
         )}
       >
@@ -40,13 +40,6 @@ export default function SpotlightCard({
             className
           )}
         >
-          <div
-            className="absolute bottom-0 translate-y-1/2 left-1/2 -translate-x-1/2 
-          pointer-events-none -z-10 w-1/2 aspect-square"
-            aria-hidden="true"
-          >
-            <div className="absolute inset-0 translate-z-0 bg-slate-800 rounded-full blur-[80px]"></div>
-          </div>
           {children}
         </div>
       </div>

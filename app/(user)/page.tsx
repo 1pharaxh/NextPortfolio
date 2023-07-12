@@ -120,7 +120,7 @@ export default function Home() {
         {/* Name and Socials  */}
         <div className="flex flex-col md:flex-row w-full gap-2">
           <div className="flex-initial w-full md:w-4/6">
-            <SpotlightCard gradient={false}>
+            <SpotlightCard gradient={true}>
               <NameCard />
             </SpotlightCard>
           </div>
@@ -133,12 +133,12 @@ export default function Home() {
         {/* About and Tech Stack */}
         <div className="flex flex-col lg:flex-row w-full gap-2">
           <div className="flex-initial w-full lg:w-2/6 ">
-            <SpotlightCard gradient={false}>
+            <SpotlightCard gradient={true}>
               <TechStackCard className="flex-grow" />
             </SpotlightCard>
           </div>
           <div className="flex-initial w-full lg:w-4/6">
-            <SpotlightCard gradient={true} tilt={false}>
+            <SpotlightCard gradient={false} tilt={false}>
               <AboutCard />
             </SpotlightCard>
           </div>
