@@ -175,7 +175,7 @@ export default function Home() {
               alt="Vercel Logo"
               width={70}
               height={70}
-              className="inline-block ml-1 mr-1"
+              className="inline-block ml-1 mr-1 "
             />
             . Created by <span className="font-semibold">Akarshan Mishra.</span>
           </div>
