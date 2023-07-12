@@ -8,7 +8,12 @@ import ExperienceCard from "@/components/ExperienceCard";
 import ProjectCard from "@/components/ProjectCard";
 import SearchButton from "@/components/SearchButton";
 import Image from "next/image";
-import { Spotlight, SpotlightCard } from "@/components/ui/card";
+import { Spotlight } from "@/components/ui/card";
+import dynamic from "next/dynamic";
+
+const SpotlightCard = dynamic(() => import("@/components/ui/SpotlightCard"), {
+  ssr: false,
+});
 
 const projectArr = [
   {

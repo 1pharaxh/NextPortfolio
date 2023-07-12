@@ -1,6 +1,9 @@
 import Image from "next/image";
-import { Spotlight, SpotlightCard } from "./ui/card";
-
+import { Spotlight } from "./ui/card";
+import dynamic from "next/dynamic";
+const SpotlightCard = dynamic(() => import("./ui/SpotlightCard"), {
+  ssr: false,
+});
 interface ProjectsProps {
   // define the props for the NameCard component here
   title?: string;
