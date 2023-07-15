@@ -1,18 +1,20 @@
 import Link from "next/link";
 import type { SanityDocument } from "@sanity/client";
+import Image from "next/image";
+import { client } from "@/sanity/lib/client";
+import imageUrlBuilder from "@sanity/image-url";
+const builder = imageUrlBuilder(client);
 
 export default function Posts({ posts = [] }: { posts: SanityDocument[] }) {
   const title = posts.length === 1 ? `1` : `${posts.length}`;
-  console.log(posts);
-
   return (
-    <div className="min-h-screen min-w-[100vw] mt-10">
-      <main className="container mx-auto grid grid-cols-1 divide-y gap-16 divide-blue-100">
+    <div className="min-h-screen max-w-[100vw] mt-10">
+      <main className="max-w-5xl mx-auto grid grid-cols-1 divide-y gap-16 divide-blue-100">
         <div className="flex justify-start items-start  min-[897px]:justify-between  min-[897px]:items-center flex-col  min-[897px]:flex-row">
           <div className="flex flex-col gap-0">
             {/* Changeable - Color and Text */}
             <h1 className="text-4xl min-[897px]:text-5xl p-4 pl-0 leading-10 font-bold">
-              Akarshan's |{" "}
+              My |{" "}
               <span className="bg-gradient-to-br from-blue-200 to-blue-500 bg-clip-text font-bold text-transparent">
                 Blog
               </span>
@@ -30,15 +32,38 @@ export default function Posts({ posts = [] }: { posts: SanityDocument[] }) {
             design, side projects, AI and everything inbetween.
           </h1>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 ">
+        <div className="mb-32 pt-16 grid grid-cols-1 gap-y-20 md:grid-cols-2 md:gap-x-16 md:gap-y-32 lg:gap-x-32">
           {posts.map((post) => (
-            <Link
-              key={post._id}
-              href={`blogpost/${post.slug.current}`}
-              className="p-4 hover:bg-blue-50"
-            >
-              <h2>{post.title}</h2>
-            </Link>
+            <div key={post._id} className=" flex flex-col">
+              {post?.mainImage ? (
+                <div className="mb-5 brightness-75 hover:brightness-100 transition">
+                  <Image
+                    className="w-full rounded-lg"
+                    src={builder
+                      .image(post.mainImage)
+                      .width(364)
+                      .height(220)
+                      .url()}
+                    width={364}
+                    height={220}
+                    alt={post?.mainImage?.alt}
+                  />
+                </div>
+              ) : null}
+              <h2 className="mb-3 text-3xl leading-snug">
+                <Link
+                  className="hover:underline decoration-blue-500"
+                  href={`blogpost/${post.slug.current}`}
+                >
+                  {post.title}{" "}
+                </Link>
+              </h2>
+
+              <div className="mb-4 text-xs opacity-80 ">March 3, 2023</div>
+              <p className="text-md mb-4 leading-relaxed opacity-95">
+                I ran into a big problem with passwords. Here’s how I solved it.
+              </p>
+            </div>
           ))}
         </div>
       </main>
