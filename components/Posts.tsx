@@ -33,7 +33,7 @@ export default function Posts({
           <div className="flex flex-col gap-0">
             {/* Changeable - Color and Text */}
             <Link
-              className="text-4xl font-bold leading-tight tracking-tighter hover:underline md:text-6xl"
+              className="text-5xl font-bold leading-tight tracking-tighter hover:underline md:text-6xl"
               href="/blog"
             >
               My |{" "}
