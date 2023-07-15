@@ -6,9 +6,10 @@ export const postsQuery = groq`*[_type == "post" && defined(slug.current)] | ord
   }`;
 
 export const paginatedPostsQuery = (
-  startIndex: number
+  startIndex: number,
+  endIndex: number
 ) => groq`*[_type == "post" && defined(slug.current)] | order(publishedAt desc) [${startIndex}...${
-  startIndex + 2
+  startIndex + endIndex
 }] {
     _id, title, slug, mainImage, publishedAt, description, author->{_id,name, image, bio}, categories[]->{_id, title, "color":color.hex}
 }`;
