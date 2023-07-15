@@ -122,7 +122,25 @@ body {
 
     );
 }
+::-webkit-scrollbar {
+  width: 12px;
+}
 
+::-webkit-scrollbar-track {
+  background: linear-gradient(
+    180deg,
+      transparent,
+      var(--background-end-rgb) 0%,
+      var(--background-via-rgb) 50%,
+      var(--background-start-rgb) 95%
+
+    );
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: white;
+  border-radius: 20px;
+}
 
 
 
