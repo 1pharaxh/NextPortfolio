@@ -9,5 +9,9 @@ export default async function Home() {
   const posts = await cachedClient(postsQuery);
   const [firstPost, ...rest] = posts;
 
-  return <Posts posts={rest} firstPost={firstPost} />;
+  return (
+    <main>
+      <Posts posts={rest} firstPost={firstPost} />
+    </main>
+  );
 }

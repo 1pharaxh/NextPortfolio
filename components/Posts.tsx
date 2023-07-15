@@ -28,7 +28,7 @@ export default function Posts({
     <div
       className={cn("min-h-screen container mx-auto max-w-4xl px-5", className)}
     >
-      <main className=" grid grid-cols-1 gap-16 divide-blue-100 divide-y">
+      <div className=" grid grid-cols-1 gap-16 divide-blue-100 divide-y">
         <section className="my-5 flex flex-col justify-items-center md:flex-row md:justify-between ">
           <div className="flex flex-col gap-0">
             {/* Changeable - Color and Text */}
@@ -97,22 +97,20 @@ export default function Posts({
                       {firstPost?.author?.name}
                     </span>
                     <div className="flex gap-2">
-                      {
-                        firstPost?.categories?.map(
-                          (category: SanityDocument) => (
-                            <p
-                              key={category._id}
-                              style={{
-                                color: category.color,
-                                borderColor: category.color,
-                              }}
-                              className={`text-sm  font-semibold rounded-lg border p-2`}
-                            >
-                              {category.title}
-                            </p>
-                          )
-                        ) /* Changeable - Category */
-                      }
+                      {firstPost?.categories?.map(
+                        (category: SanityDocument) => (
+                          <p
+                            key={category._id}
+                            style={{
+                              color: category.color,
+                              borderColor: category.color,
+                            }}
+                            className={`text-sm  font-semibold rounded-lg border p-2`}
+                          >
+                            {category.title}
+                          </p>
+                        )
+                      )}
                     </div>
                   </div>
                 </div>
@@ -123,7 +121,7 @@ export default function Posts({
             <div>
               <h3 className="mb-4 text-4xl leading-tight lg:text-5xl">
                 <Link
-                  className="hover:underline decoration-blue-500"
+                  className="hover:underline decoration-blue-500 line-clamp-2"
                   href={`/blogpost/${firstPost?.slug.current}`}
                 >
                   {firstPost?.title}
@@ -181,20 +179,18 @@ export default function Posts({
                         {post.author.name}
                       </span>
                       <div className="flex gap-2">
-                        {
-                          post.categories?.map((category: SanityDocument) => (
-                            <p
-                              key={category._id}
-                              style={{
-                                color: category.color,
-                                borderColor: category.color,
-                              }}
-                              className={`text-sm  font-semibold rounded-lg border p-2`}
-                            >
-                              {category.title}
-                            </p>
-                          )) /* Changeable - Category */
-                        }
+                        {post.categories?.map((category: SanityDocument) => (
+                          <p
+                            key={category._id}
+                            style={{
+                              color: category.color,
+                              borderColor: category.color,
+                            }}
+                            className={`text-sm  font-semibold rounded-lg border p-2 line-clamp-2`}
+                          >
+                            {category.title}
+                          </p>
+                        ))}
                       </div>
                     </div>
                   </div>
@@ -218,7 +214,7 @@ export default function Posts({
             ))}
           </div>
         </div>
-      </main>
+      </div>
     </div>
   );
 }
