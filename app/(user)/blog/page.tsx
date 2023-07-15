@@ -16,9 +16,7 @@ export default async function Home({ searchParams }: { searchParams: any }) {
     ? parseInt(searchParams.page)
     : 1;
   const offset: number = (currentPage - 1) * dataPerPage;
-  const paginatedPosts = await cachedClient(
-    paginatedPostsQuery(dataPerPage, offset)
-  );
+  const paginatedPosts = await cachedClient(paginatedPostsQuery(offset));
 
   let pageNumbers: number[] = [];
   for (let i = currentPage - 1; i <= currentPage + 1; i++) {
@@ -42,7 +40,7 @@ export default async function Home({ searchParams }: { searchParams: any }) {
 
         <BlogCards posts={paginatedPosts} />
 
-        <div className="flex justify-center">
+        <div className="flex justify-center items-center">
           {currentPage - 1 >= 1 && (
             <>
               <Link href="/blog">{"<<"}</Link>
@@ -52,8 +50,8 @@ export default async function Home({ searchParams }: { searchParams: any }) {
           {pageNumbers.map((number) => (
             <Link key={number} href={`/blog?page=${number}`}>
               <p
-                className={`mx-2 px-4 py-2 bg-blue-500 text-white rounded-md ${
-                  number == currentPage ? "text-red-500" : ""
+                className={`mx-2 px-4 py-2 bg-blue-500 rounded-md ${
+                  number == currentPage ? "text-red-500" : "text-white "
                 }`}
               >
                 {number}
@@ -63,7 +61,7 @@ export default async function Home({ searchParams }: { searchParams: any }) {
 
           {currentPage + 1 <= totalPages && (
             <>
-              <Link href="/blog">{">>"}</Link>
+              <Link href={`/blog?page=${totalPages}`}>{">>"}</Link>
             </>
           )}
         </div>
