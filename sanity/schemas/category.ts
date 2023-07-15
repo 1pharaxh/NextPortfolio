@@ -10,5 +10,14 @@ export default defineType({
       title: "Title",
       type: "string",
     }),
+    // add a color picker
+    defineField({
+      name: "color",
+      title: "Color",
+      type: "color",
+      options: {
+        disableAlpha: true,
+      },
+    }),
   ],
 });
