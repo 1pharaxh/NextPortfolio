@@ -36,9 +36,8 @@ export default async function Home({ searchParams }: { searchParams: any }) {
   return (
     <main className="flex flex-col items-center justify-center">
       <SearchButton />
-
-      <div className="min-h-screen ">
-        <div className="container mx-auto max-w-4xl px-5">
+      <>
+        <div className="min-h-screen container mx-auto max-w-4xl px-5">
           <div className=" grid grid-cols-1 gap-4 md:gap-16 divide-blue-100 divide-y">
             <BlogNavbar
               firstTitle="Akarshan's"
@@ -91,7 +90,7 @@ export default async function Home({ searchParams }: { searchParams: any }) {
           bottomLink="Akarshan Mishra"
           bottomHref="https://akarshan.vercel.app/"
         />
-      </div>
+      </>
     </main>
   );
 }

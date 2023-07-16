@@ -1,3 +1,8 @@
+"use client";
+import { Highlight, Prism, themes } from "prism-react-renderer";
+
+(typeof global !== "undefined" ? global : window).Prism = Prism;
+require("prismjs/components/prism-python");
 export default function CodeBlock(data: {
   code: string;
   filename: string;
@@ -15,9 +20,20 @@ export default function CodeBlock(data: {
           language: <span className="opacity-70">{language}</span>
         </p>
       </div>
-      <pre className="p-2">
-        <code>{code}</code>
-      </pre>
+      <Highlight theme={themes.vsDark} code={code} language={language}>
+        {({ className, style, tokens, getLineProps, getTokenProps }) => (
+          <pre style={style}>
+            {tokens.map((line, i) => (
+              <div key={i} {...getLineProps({ line })}>
+                <span>{i + 1 + " "}</span>
+                {line.map((token, key) => (
+                  <span key={key} {...getTokenProps({ token })} />
+                ))}
+              </div>
+            ))}
+          </pre>
+        )}
+      </Highlight>
     </div>
   );
 }
