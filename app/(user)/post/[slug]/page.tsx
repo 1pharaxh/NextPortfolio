@@ -3,13 +3,13 @@ import BlogNavbar from "@/components/BlogNavbar";
 import SearchButton from "@/components/SearchButton";
 import { builder } from "@/sanity/lib/builder";
 import { cachedClient } from "@/sanity/lib/client";
-import { postQuery } from "@/sanity/lib/queries";
+import { getMetaData, postQuery } from "@/sanity/lib/queries";
 import { PortableText } from "@portabletext/react";
 import { SanityDocument } from "next-sanity";
 import Image from "next/image";
 import CodeBlock from "@/components/CodeBlock";
 import { getImageDimensions } from "@sanity/asset-utils";
-
+import Head from "next/head";
 type Props = {
   params: {
     slug: string;
@@ -70,8 +70,17 @@ const components = {
   },
 };
 
+export async function generateMetadata({ params: { slug } }: Props) {
+  const post = await cachedClient<SanityDocument>(getMetaData, { slug });
+  return {
+    title: post?.metadata,
+    description: post?.description,
+  };
+}
+
 export default async function Post({ params: { slug } }: Props) {
   const post = await cachedClient<SanityDocument>(postQuery, { slug });
+
   return (
     <main className="flex flex-col items-center justify-center">
       <SearchButton />
