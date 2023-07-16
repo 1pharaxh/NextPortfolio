@@ -123,7 +123,8 @@ body {
     );
 }
 ::-webkit-scrollbar {
-  width: 12px;
+  width: 5px;
+  height: 5px;
 }
 
 ::-webkit-scrollbar-track {
@@ -138,7 +139,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: white;
+  background-color: theme('colors.indigo.600');
   border-radius: 20px;
 }
 
