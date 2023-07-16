@@ -8,6 +8,7 @@ import {
   Code,
   Instagram,
   Twitter,
+  Newspaper,
 } from "lucide-react";
 
 import {
@@ -47,35 +48,105 @@ export default function MenuModal({
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
           <CommandGroup heading="Suggestions">
-            <CommandItem>
-              <Home className="mr-2 h-4 w-4" />
-              <span>Home</span>
-            </CommandItem>
-            <CommandItem>
-              <Smile className="mr-2 h-4 w-4" />
-              <span>Resume</span>
-            </CommandItem>
-            <CommandItem>
-              <Globe className="mr-2 h-4 w-4" />
-              <span>Work Experience</span>
-            </CommandItem>
-            <CommandItem>
-              <Code className="mr-2 h-4 w-4" />
-              <span>Projects</span>
-            </CommandItem>
+            <div
+              onClick={() => {
+                if (window.location.pathname !== "/") {
+                  window.location.href = "/";
+                }
+                const home = document.getElementById("homeSection");
+                home?.scrollIntoView({ behavior: "smooth" });
+                setModalOpen(false);
+              }}
+            >
+              <CommandItem>
+                <Home className="mr-2 h-4 w-4" />
+                <span>Home</span>
+              </CommandItem>
+            </div>
+            <div
+              onClick={() => {
+                // go to / route then scroll to projects
+                if (window.location.pathname !== "/") {
+                  window.location.href = "/";
+                }
+                const resume = document.getElementById("resumesection");
+                resume?.scrollIntoView({ behavior: "smooth" });
+                setModalOpen(false);
+              }}
+            >
+              <CommandItem>
+                <Smile className="mr-2 h-4 w-4" />
+                <span>Resume</span>
+              </CommandItem>
+            </div>
+            <div
+              onClick={() => {
+                window.location.href = "/blog";
+              }}
+            >
+              <CommandItem>
+                <Newspaper className="mr-2 h-4 w-4" />
+                <span>My Blog</span>
+                <CommandShortcut>⌘B</CommandShortcut>
+              </CommandItem>
+            </div>
+            <div
+              onClick={() => {
+                // go to / route then scroll to projects
+                if (window.location.pathname !== "/") {
+                  window.location.href = "/";
+                }
+                const exp = document.getElementById("workexperiencesection");
+                exp?.scrollIntoView({ behavior: "smooth" });
+                setModalOpen(false);
+              }}
+            >
+              <CommandItem>
+                <Globe className="mr-2 h-4 w-4" />
+                <span>Work Experience</span>
+              </CommandItem>
+            </div>
+            <div
+              onClick={() => {
+                // go to / route then scroll to projects
+                if (window.location.pathname !== "/") {
+                  window.location.href = "/";
+                }
+                const projects = document.getElementById("projectssection");
+                projects?.scrollIntoView({ behavior: "smooth" });
+                setModalOpen(false);
+              }}
+            >
+              <CommandItem>
+                <Code className="mr-2 h-4 w-4" />
+                <span>Projects</span>
+              </CommandItem>
+            </div>
           </CommandGroup>
           <CommandSeparator />
           <CommandGroup heading="Socials">
-            <CommandItem>
-              <Instagram className="mr-2 h-4 w-4" />
-              <span>@1akarshan_</span>
-              <CommandShortcut>⌘P</CommandShortcut>
-            </CommandItem>
-            <CommandItem>
-              <Twitter className="mr-2 h-4 w-4" />
-              <span>Twitter</span>
-              <CommandShortcut>⌘B</CommandShortcut>
-            </CommandItem>
+            <div
+              onClick={() => {
+                window.location.href = "https://www.instagram.com/1akarshan_/";
+              }}
+            >
+              <CommandItem>
+                <Instagram className="mr-2 h-4 w-4" />
+                <span>@1akarshan_</span>
+                <CommandShortcut>⌘P</CommandShortcut>
+              </CommandItem>
+            </div>
+            <div
+            // onClick={() => {
+            //   alert("Twitter");
+            // }}
+            >
+              <CommandItem>
+                <Twitter className="mr-2 h-4 w-4" />
+                <span>Twitter</span>
+                <CommandShortcut>⌘T</CommandShortcut>
+              </CommandItem>
+            </div>
           </CommandGroup>
         </CommandList>
       </Command>

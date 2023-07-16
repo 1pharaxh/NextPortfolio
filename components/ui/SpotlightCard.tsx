@@ -19,16 +19,19 @@ type SpotlightCardProps = {
   className?: string;
   gradient?: boolean;
   tilt?: boolean;
+  id?: string;
 };
 export default function SpotlightCard({
   children,
   className = "",
   gradient,
   tilt = true,
+  id = "",
 }: SpotlightCardProps) {
   if (isMobile && /iPhone/.test(navigator.userAgent)) {
     return (
       <div
+        id={id}
         className={cn(
           `relative h-full bg-slate-800 rounded-3xl p-px`,
           className
@@ -48,6 +51,7 @@ export default function SpotlightCard({
     return tilt ? (
       <Tilt options={defaultOptions}>
         <div
+          id={id}
           className={cn(
             `relative h-full bg-slate-800 rounded-3xl p-px before:absolute before:w-80 before:h-80 
           before:-left-40 before:-top-40 before:bg-slate-400 before:rounded-full before:opacity-0 
@@ -81,6 +85,7 @@ export default function SpotlightCard({
       </Tilt>
     ) : (
       <div
+        id={id}
         className={cn(
           `relative h-full bg-slate-800 rounded-3xl p-px before:absolute before:w-80 before:h-80 
       before:-left-40 before:-top-40 before:bg-slate-400 before:rounded-full before:opacity-0 

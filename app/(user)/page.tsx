@@ -146,13 +146,21 @@ export default function Home() {
         {/* Work Experience, Resume and Project Section  */}
         <div className="flex flex-col md:flex-row w-full gap-2">
           <div className="flex-initial w-full md:w-3/6 lg:w-4/6">
-            <SpotlightCard gradient={true} tilt={false}>
+            <SpotlightCard
+              id="workexperiencesection"
+              gradient={true}
+              tilt={false}
+            >
               <ExperienceCard />
             </SpotlightCard>
           </div>
           <div className=" w-full md:w-3/6 lg:w-2/6">
             <Spotlight className="flex flex-col h-full gap-2 justify-between group/card">
-              <SpotlightCard className="flex-grow " gradient={true}>
+              <SpotlightCard
+                id="resumesection"
+                className="flex-grow "
+                gradient={true}
+              >
                 <ResumeCard />
               </SpotlightCard>
               <SpotlightCard
