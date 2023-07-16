@@ -7,11 +7,13 @@ import Link from "next/link";
 export default function BlogCards({
   posts,
   className,
+  numPosts,
 }: {
   posts: SanityDocument[];
   className?: string;
+  numPosts: number;
 }): JSX.Element {
-  const title = posts.length === 1 ? `1` : `${posts.length}`;
+  const title = numPosts === 1 ? `1` : `${numPosts}`;
 
   return (
     <div className={className}>

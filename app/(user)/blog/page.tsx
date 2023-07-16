@@ -7,8 +7,10 @@ import Link from "next/link";
 import BlogFooter from "@/components/BlogFooter";
 // searchParams is the query string from the URL
 export default async function Home({ searchParams }: { searchParams: any }) {
-  const posts = await cachedClient(postsQuery);
+  let posts = await cachedClient(postsQuery);
   const [firstPost, ...rest] = posts;
+  posts = rest;
+  const latestPostPublishedAt = firstPost.publishedAt;
 
   const totalData: number = posts.length;
   const dataPerPage: number = 6;
@@ -19,7 +21,7 @@ export default async function Home({ searchParams }: { searchParams: any }) {
       : 1;
   const offset: number = (currentPage - 1) * dataPerPage;
   const paginatedPosts = await cachedClient(
-    paginatedPostsQuery(offset, dataPerPage)
+    paginatedPostsQuery(offset, dataPerPage, latestPostPublishedAt)
   );
 
   let pageNumbers: number[] = [];
@@ -33,7 +35,7 @@ export default async function Home({ searchParams }: { searchParams: any }) {
   return (
     <main className="min-h-screen ">
       <div className="container mx-auto max-w-4xl px-5">
-        <div className=" grid grid-cols-1 gap-16 divide-blue-100 divide-y">
+        <div className=" grid grid-cols-1 gap-4 md:gap-16 divide-blue-100 divide-y">
           <BlogNavbar
             firstTitle="My"
             lastTitle="Blog"
@@ -43,7 +45,7 @@ export default async function Home({ searchParams }: { searchParams: any }) {
 
           <BlogRecentCard firstPost={firstPost} />
           <div>
-            <BlogCards posts={paginatedPosts} />
+            <BlogCards numPosts={posts.length} posts={paginatedPosts} />
             <div className="flex justify-center items-center">
               {currentPage - 1 >= 1 && (
                 <>

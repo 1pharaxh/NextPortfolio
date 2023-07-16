@@ -74,7 +74,7 @@ export default function BlogRecentCard({
           </Link>
         </div>
       </div>
-      <div className="mb-20 md:mb-28 md:grid md:grid-cols-2 md:gap-x-16 lg:gap-x-8">
+      <div className="mb-8 md:mb-28 md:grid md:grid-cols-2 md:gap-x-16 lg:gap-x-8">
         <div>
           <h3 className="mb-4 text-4xl leading-tight lg:text-5xl">
             <Link
@@ -89,7 +89,7 @@ export default function BlogRecentCard({
           </div>
         </div>
         <div className="md:border-t md:pt-4 ">
-          <p className="mb-4 text-lg leading-relaxed">
+          <p className="mb-4 text-lg leading-relaxed line-clamp-2 md:line-clamp-none">
             {firstPost?.description}
           </p>
         </div>
