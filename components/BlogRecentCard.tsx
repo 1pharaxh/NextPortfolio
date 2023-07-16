@@ -18,14 +18,14 @@ export default function BlogRecentCard({
         <div className="sm:mx-0">
           <Link
             aria-label={`Read ${firstPost?.title}`}
-            href={`/blogpost/${firstPost?.slug.current}`}
+            href={`/post/${firstPost?.slug.current}`}
           >
             <p className="absolute z-10 m-2 w-max rounded-md bg-slate-300 py-2 px-4 text-lg text-slate-900 lg:text-2xl">
               Latest blog!
             </p>
             <div className="relative">
               <Image
-                alt={firstPost?.mainImage?.alt}
+                alt={firstPost?.mainImage?.alt || " Main blog image "}
                 src={builder
                   .image(firstPost?.mainImage)
                   .width(800)
@@ -44,7 +44,7 @@ export default function BlogRecentCard({
                 <span className="font-semibold text-slate-200 text-base flex flex-col gap-2">
                   <Image
                     src={builder
-                      .image(firstPost?.author?.image)
+                      .image(firstPost?.author?.image || " Author image")
                       .width(200)
                       .height(200)
                       .url()}
@@ -56,18 +56,20 @@ export default function BlogRecentCard({
                   {firstPost?.author?.name}
                 </span>
                 <div className="flex gap-2">
-                  {firstPost?.categories?.map((category: SanityDocument) => (
-                    <p
-                      key={category._id}
-                      style={{
-                        color: category.color,
-                        borderColor: category.color,
-                      }}
-                      className={`text-sm  font-semibold rounded-lg border p-2`}
-                    >
-                      {category.title}
-                    </p>
-                  ))}
+                  {firstPost?.categories?.map(
+                    (category: SanityDocument, index: number) => (
+                      <p
+                        key={index}
+                        style={{
+                          color: category.color,
+                          borderColor: category.color,
+                        }}
+                        className={`text-sm  font-semibold rounded-lg border p-2`}
+                      >
+                        {category.title}
+                      </p>
+                    )
+                  )}
                 </div>
               </div>
             </div>
@@ -79,7 +81,7 @@ export default function BlogRecentCard({
           <h3 className="mb-4 text-4xl leading-tight lg:text-5xl">
             <Link
               className="hover:underline decoration-blue-500 line-clamp-2"
-              href={`/blogpost/${firstPost?.slug.current}`}
+              href={`/post/${firstPost?.slug.current}`}
             >
               {firstPost?.title}
             </Link>

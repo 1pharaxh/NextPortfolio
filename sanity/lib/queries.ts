@@ -16,8 +16,7 @@ export const paginatedPostsQuery = (
 }`;
 // Get a single post by its slug
 export const postQuery = groq`*[_type == "post" && slug.current == $slug][0]{ 
-    title, mainImage, body, categories[]->{_id, title, "color":color.hex}, author->{_id,name, image, bio}, 
-    body, publishedAt, metadata, description
+    title, mainImage, body, categories[]->{_id, title, "color":color.hex}, author->{_id,name, image, bio}, publishedAt, metadata, description
   }`;
 
 // Get all post slugs

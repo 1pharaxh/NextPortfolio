@@ -8,7 +8,7 @@ type Props = {
   };
 };
 export default async function Post({ params: { slug } }: Props) {
-  // const posts = await cachedClient<SanityDocument>(postQuery, { slug });
-  // console.log(posts);
-  return <div className="min-w-[100vw] min-h-screen">Post : {slug}</div>;
+  const post = await cachedClient<SanityDocument>(postQuery, { slug });
+  const text = JSON.stringify(post, null, 2);
+  return <div className="min-w-[100vw] min-h-screen">{text}</div>;
 }

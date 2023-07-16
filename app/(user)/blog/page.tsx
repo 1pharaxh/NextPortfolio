@@ -41,7 +41,7 @@ export default async function Home({ searchParams }: { searchParams: any }) {
         <div className="container mx-auto max-w-4xl px-5">
           <div className=" grid grid-cols-1 gap-4 md:gap-16 divide-blue-100 divide-y">
             <BlogNavbar
-              firstTitle="My"
+              firstTitle="Akarshan's"
               lastTitle="Blog"
               blogDescription="Welcome to my blog. Here you can expect to find posts about tech,
         design, side projects, AI and everything inbetween."
