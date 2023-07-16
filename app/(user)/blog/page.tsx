@@ -5,6 +5,7 @@ import BlogRecentCard from "@/components/BlogRecentCard";
 import BlogCards from "@/components/BlogCards";
 import Link from "next/link";
 import BlogFooter from "@/components/BlogFooter";
+import SearchButton from "@/components/SearchButton";
 // searchParams is the query string from the URL
 export default async function Home({ searchParams }: { searchParams: any }) {
   let posts = await cachedClient(postsQuery);
@@ -33,60 +34,64 @@ export default async function Home({ searchParams }: { searchParams: any }) {
     pageNumbers.push(i);
   }
   return (
-    <main className="min-h-screen ">
-      <div className="container mx-auto max-w-4xl px-5">
-        <div className=" grid grid-cols-1 gap-4 md:gap-16 divide-blue-100 divide-y">
-          <BlogNavbar
-            firstTitle="My"
-            lastTitle="Blog"
-            blogDescription="Welcome to my blog. Here you can expect to find posts about tech,
+    <main className="flex flex-col items-center justify-center">
+      <SearchButton />
+
+      <div className="min-h-screen ">
+        <div className="container mx-auto max-w-4xl px-5">
+          <div className=" grid grid-cols-1 gap-4 md:gap-16 divide-blue-100 divide-y">
+            <BlogNavbar
+              firstTitle="My"
+              lastTitle="Blog"
+              blogDescription="Welcome to my blog. Here you can expect to find posts about tech,
         design, side projects, AI and everything inbetween."
-          />
+            />
 
-          <BlogRecentCard firstPost={firstPost} />
-          <div>
-            <BlogCards numPosts={posts.length} posts={paginatedPosts} />
-            <div className="flex justify-center items-center">
-              {currentPage - 1 >= 1 && (
-                <>
-                  <Link href="/blog" className="hover:underline mr-2">
-                    First
+            <BlogRecentCard firstPost={firstPost} />
+            <div>
+              <BlogCards numPosts={posts.length} posts={paginatedPosts} />
+              <div className="flex justify-center items-center">
+                {currentPage - 1 >= 1 && (
+                  <>
+                    <Link href="/blog" className="hover:underline mr-2">
+                      First
+                    </Link>
+                  </>
+                )}
+
+                {pageNumbers.map((number) => (
+                  <Link key={number} href={`/blog?page=${number}`}>
+                    <p
+                      className={`mx-2 px-4 py-2 bg-transparent rounded-md text-white ${
+                        number == currentPage ? "font-bold border-2" : "border"
+                      }`}
+                    >
+                      {number}
+                    </p>
                   </Link>
-                </>
-              )}
+                ))}
 
-              {pageNumbers.map((number) => (
-                <Link key={number} href={`/blog?page=${number}`}>
-                  <p
-                    className={`mx-2 px-4 py-2 bg-transparent rounded-md text-white ${
-                      number == currentPage ? "font-bold border-2" : "border"
-                    }`}
-                  >
-                    {number}
-                  </p>
-                </Link>
-              ))}
-
-              {currentPage + 1 <= totalPages && (
-                <>
-                  <Link
-                    className="hover:underline ml-2"
-                    href={`/blog?page=${totalPages}`}
-                  >
-                    Last
-                  </Link>
-                </>
-              )}
+                {currentPage + 1 <= totalPages && (
+                  <>
+                    <Link
+                      className="hover:underline ml-2"
+                      href={`/blog?page=${totalPages}`}
+                    >
+                      Last
+                    </Link>
+                  </>
+                )}
+              </div>
             </div>
           </div>
         </div>
+        <BlogFooter
+          email="akarshan@ualberta.ca"
+          bottomHeader="Made with ❤️ by"
+          bottomLink="Akarshan Mishra"
+          bottomHref="https://akarshan.vercel.app/"
+        />
       </div>
-      <BlogFooter
-        email="akarshan@ualberta.ca"
-        bottomHeader="Made with ❤️ by"
-        bottomLink="Akarshan Mishra"
-        bottomHref="https://akarshan.vercel.app/"
-      />
     </main>
   );
 }
