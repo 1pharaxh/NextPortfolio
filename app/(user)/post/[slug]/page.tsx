@@ -10,6 +10,7 @@ import Image from "next/image";
 import CodeBlock from "@/components/CodeBlock";
 import { getImageDimensions } from "@sanity/asset-utils";
 import Head from "next/head";
+import BreadCrumbs from "@/components/BreadCrumbs";
 type Props = {
   params: {
     slug: string;
@@ -92,6 +93,8 @@ export default async function Post({ params: { slug } }: Props) {
             blogDescription=""
           />
           <div className="pt-4 md:pt-16">
+            <BreadCrumbs className="mb-4" />
+
             <h1 className="mb-12 text-left text-4xl font-bold leading-tight tracking-tighter sm:text-6xl md:text-7xl md:leading-none">
               <span className="bg-gradient-to-br from-indigo-200 to-indigo-500 bg-clip-text font-bold text-transparent">
                 {post.title}

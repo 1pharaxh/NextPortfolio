@@ -13,7 +13,7 @@ export default function BlogRecentCard({
   className?: string;
 }): JSX.Element {
   return (
-    <div className={cn("flex flex-col pt-16", className)}>
+    <div className={cn("flex flex-col", className)}>
       <div className="border border-accent-5/10  brightness-95 hover:brightness-100 transition dark:border-accent-4/25 rounded-xl mb-8 md:mb-16">
         <div className="sm:mx-0">
           <Link

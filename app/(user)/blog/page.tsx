@@ -6,6 +6,7 @@ import BlogCards from "@/components/BlogCards";
 import Link from "next/link";
 import BlogFooter from "@/components/BlogFooter";
 import SearchButton from "@/components/SearchButton";
+import BreadCrumbs from "@/components/BreadCrumbs";
 // searchParams is the query string from the URL
 export default async function Home({ searchParams }: { searchParams: any }) {
   let posts = await cachedClient(postsQuery);
@@ -45,8 +46,10 @@ export default async function Home({ searchParams }: { searchParams: any }) {
               blogDescription="Welcome to my blog. Here you can expect to find posts about tech,
         design, side projects, AI and everything inbetween."
             />
-
-            <BlogRecentCard firstPost={firstPost} />
+            <div>
+              <BreadCrumbs className="pt-4" />
+              <BlogRecentCard className="pt-12" firstPost={firstPost} />
+            </div>
             <div>
               <BlogCards numPosts={posts.length} posts={paginatedPosts} />
               <div className="flex justify-center items-center">
