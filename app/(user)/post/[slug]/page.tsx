@@ -76,7 +76,23 @@ export async function generateMetadata({ params: { slug } }: Props) {
   return {
     title: post?.metadata,
     description: post?.description,
-  };
+
+    openGraph: {
+      title: post?.metadata,
+      description: post?.description,
+      images: [
+        {
+          url: builder
+            .image(post?.mainImage)
+            .width(800)
+            .height(500)
+            .url() as string,
+          width: 800,
+          height: 500,
+          alt: post?.mainImage?.alt || " Main blog image ",
+        }
+      ]
+  },
 }
 
 export default async function Post({ params: { slug } }: Props) {
