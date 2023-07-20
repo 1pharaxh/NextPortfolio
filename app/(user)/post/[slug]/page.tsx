@@ -76,10 +76,15 @@ export async function generateMetadata({ params: { slug } }: Props) {
   return {
     title: post?.metadata,
     description: post?.description,
-
+    creator: "Akarshan Mishra",
+    keywords: ["Leetcode", "Coding Interview", "Software Development"],
     openGraph: {
       title: post?.metadata,
       description: post?.description,
+      siteName: "Akarshan Mishra's Blog",
+      locale: "en_US",
+      type: "website",
+      authors: ["Akarshan Mishra", "Akarshan"],
       images: [
         {
           url: builder

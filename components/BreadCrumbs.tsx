@@ -27,7 +27,8 @@ function BreadCrumbs({ className, ...props }: { className?: string }) {
   return (
     <div
       className={cn(
-        "text-gray-200 text-lg flex items-center justify-start flex-row gap-4",
+        `text-gray-200 text-lg flex items-center justify-start flex-row gap-2 sm:gap-4 
+        tracking-normal sm:tracking-widest leading-tight`,
         className
       )}
     >
