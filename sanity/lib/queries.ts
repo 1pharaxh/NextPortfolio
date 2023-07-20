@@ -25,5 +25,5 @@ export const postPathsQuery = groq`*[_type == "post" && defined(slug.current)][]
   }`;
 
 export const getMetaData = groq`*[_type == "post" && slug.current == $slug][0]{ 
-    title, metadata, description
+    title, metadata, description, mainImage
   }`;
