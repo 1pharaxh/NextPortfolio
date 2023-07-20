@@ -90,9 +90,10 @@ export async function generateMetadata({ params: { slug } }: Props) {
           width: 800,
           height: 500,
           alt: post?.mainImage?.alt || " Main blog image ",
-        }
-      ]
-  },
+        },
+      ],
+    },
+  };
 }
 
 export default async function Post({ params: { slug } }: Props) {
