@@ -11,18 +11,22 @@ export default function CodeBlock(data: {
   const code = data.code;
   const filename = data.filename;
   const language = data.language;
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(code);
+  };
 
   return (
-    <div>
+    <>
       <div className="border shadow-lg  bg-accent-4/10  px-3 pb-3 pt-1 rounded-xl my-6">
         <div className="flex items-center justify-between">
           <div className="flex gap-2 items-center justify-center">
-            <p className="opacity-70 pr-4">codeBlock.jsx</p>
+            <p className="opacity-70 pr-4">{filename}</p>
             <p>
               lang: <span className="opacity-70">jsx</span>
             </p>
           </div>
           <button
+            onClick={copyToClipboard}
             className="inline-flex items-center justify-center rounded-lg text-sm 
           font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-500 
           focus-visible:ring-offset-2 disabled:opacity-50 
@@ -70,6 +74,6 @@ export default function CodeBlock(data: {
           )}
         </Highlight>
       </div>
-    </div>
+    </>
   );
 }

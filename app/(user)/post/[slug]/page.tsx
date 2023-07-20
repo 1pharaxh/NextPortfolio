@@ -157,7 +157,7 @@ export default async function Post({ params: { slug } }: Props) {
           </div>
           {/* CONTENT */}
           <article
-            className="pt-4 md:pt-16 mx-auto max-w-2xl 
+            className="pt-4 md:pt-16 mx-auto w-full
           prose sm:prose-lg md:prose-xl prose-invert
           prose-h1:bg-gradient-to-br prose-h1:from-green-200 prose-h1:to-green-500 prose-h1:bg-clip-text prose-h1:text-transparent prose-h1:my-0 
           prose-h2:bg-gradient-to-br prose-h2:from-red-200 prose-h2:to-red-500 prose-h2:bg-clip-text prose-h2:text-transparent prose-h2:my-0 
