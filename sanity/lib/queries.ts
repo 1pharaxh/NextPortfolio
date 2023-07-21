@@ -16,7 +16,7 @@ export const paginatedPostsQuery = (
 }`;
 // Get a single post by its slug
 export const postQuery = groq`*[_type == "post" && slug.current == $slug][0]{ 
-    title, mainImage, body, categories[]->{_id, title, "color":color.hex}, author->{_id,name, image, bio}, publishedAt, metadata, description
+   _id, title, mainImage, body, categories[]->{_id, title, "color":color.hex}, author->{_id,name, image, bio}, publishedAt, metadata, description
   }`;
 
 // Get all post slugs
@@ -27,3 +27,9 @@ export const postPathsQuery = groq`*[_type == "post" && defined(slug.current)][]
 export const getMetaData = groq`*[_type == "post" && slug.current == $slug][0]{ 
     title, metadata, description, mainImage
   }`;
+
+export const getTopTwo = (
+  excludeId: string
+) => groq`*[_type == "post" && defined(slug.current) && _id != "${excludeId}"] | order(publishedAt desc)[0...2]{
+  _id, title, slug, mainImage, publishedAt, description, author->{_id,name, image, bio}, categories[]->{_id, title, "color":color.hex}
+}`;

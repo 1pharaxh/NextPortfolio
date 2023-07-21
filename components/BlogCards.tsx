@@ -17,10 +17,10 @@ export default function BlogCards({
 
   return (
     <div className={className}>
-      <h2 className="mb-8 pt-16  text-4xl font-bold leading-tight tracking-tighter md:text-6xl">
+      <h2 className="mb-8 text-4xl font-bold leading-tight tracking-tighter md:text-6xl">
         Older Posts - {title}
       </h2>
-      <div className="mb-32 grid grid-cols-1 gap-y-14 md:grid-cols-2 md:gap-x-16 md:gap-y-16 lg:gap-x-32">
+      <div className="grid grid-cols-1 gap-y-14 md:grid-cols-2 md:gap-x-16 md:gap-y-16 lg:gap-x-32">
         {posts.map((post: SanityDocument, index: number) => (
           <div key={index} className=" flex flex-col">
             {post?.mainImage ? (

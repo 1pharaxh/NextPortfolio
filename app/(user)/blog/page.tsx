@@ -51,7 +51,11 @@ export default async function Home({ searchParams }: { searchParams: any }) {
               <BlogRecentCard className="pt-12" firstPost={firstPost} />
             </div>
             <div>
-              <BlogCards numPosts={posts.length} posts={paginatedPosts} />
+              <BlogCards
+                className="pt-16 mb-32"
+                numPosts={posts.length}
+                posts={paginatedPosts}
+              />
               <div className="flex justify-center items-center">
                 {currentPage - 1 >= 1 && (
                   <>

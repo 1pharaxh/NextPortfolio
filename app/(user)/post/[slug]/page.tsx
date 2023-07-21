@@ -3,7 +3,7 @@ import BlogNavbar from "@/components/BlogNavbar";
 import SearchButton from "@/components/SearchButton";
 import { builder } from "@/sanity/lib/builder";
 import { cachedClient } from "@/sanity/lib/client";
-import { getMetaData, postQuery } from "@/sanity/lib/queries";
+import { getMetaData, getTopTwo, postQuery } from "@/sanity/lib/queries";
 import { PortableText } from "@portabletext/react";
 import { SanityDocument } from "next-sanity";
 import Image from "next/image";
@@ -12,6 +12,7 @@ import { getImageDimensions } from "@sanity/asset-utils";
 import Head from "next/head";
 import BreadCrumbs from "@/components/BreadCrumbs";
 import { formatDate } from "@/sanity/lib/formatDate";
+import BlogCards from "@/components/BlogCards";
 type Props = {
   params: {
     slug: string;
@@ -104,6 +105,7 @@ export async function generateMetadata({ params: { slug } }: Props) {
 
 export default async function Post({ params: { slug } }: Props) {
   const post = await cachedClient<SanityDocument>(postQuery, { slug });
+  let topTwo = await cachedClient(getTopTwo(post?._id));
 
   return (
     <main className="flex flex-col items-center justify-center">
@@ -203,6 +205,11 @@ export default async function Post({ params: { slug } }: Props) {
             ) : null}
           </article>
           {/* FOOTER */}
+          <BlogCards
+            className="pt-8 sm:pt-16"
+            numPosts={topTwo.length}
+            posts={topTwo}
+          />
           <BlogFooter
             email="akarshan@ualberta.ca"
             bottomHeader="Made with ❤️ by"
