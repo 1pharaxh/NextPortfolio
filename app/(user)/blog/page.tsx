@@ -53,7 +53,7 @@ export default async function Home({ searchParams }: { searchParams: any }) {
             <div>
               <BlogCards
                 className="pt-16 mb-32"
-                numPosts={posts.length}
+                numPosts={`${totalData} Posts`}
                 posts={paginatedPosts}
               />
               <div className="flex justify-center items-center">
@@ -90,13 +90,13 @@ export default async function Home({ searchParams }: { searchParams: any }) {
               </div>
             </div>
           </div>
+          <BlogFooter
+            email="akarshan@ualberta.ca"
+            bottomHeader="Made with ❤️ by"
+            bottomLink="Akarshan Mishra"
+            bottomHref="https://akarshan.vercel.app/"
+          />
         </div>
-        <BlogFooter
-          email="akarshan@ualberta.ca"
-          bottomHeader="Made with ❤️ by"
-          bottomLink="Akarshan Mishra"
-          bottomHref="https://akarshan.vercel.app/"
-        />
       </>
     </main>
   );

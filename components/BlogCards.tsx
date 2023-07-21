@@ -11,14 +11,12 @@ export default function BlogCards({
 }: {
   posts: SanityDocument[];
   className?: string;
-  numPosts: number;
+  numPosts: string;
 }): JSX.Element {
-  const title = numPosts === 1 ? `1` : `${numPosts}`;
-
   return (
     <div className={className}>
       <h2 className="mb-8 text-4xl font-bold leading-tight tracking-tighter md:text-6xl">
-        Older Posts - {title}
+        {numPosts}
       </h2>
       <div className="grid grid-cols-1 gap-y-14 md:grid-cols-2 md:gap-x-16 md:gap-y-16 lg:gap-x-32">
         {posts.map((post: SanityDocument, index: number) => (

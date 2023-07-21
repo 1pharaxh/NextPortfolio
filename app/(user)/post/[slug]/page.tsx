@@ -182,7 +182,11 @@ export default async function Post({ params: { slug } }: Props) {
                 {formatDate(post?.publishedAt)}
               </div>
               <div className="px-0 sm:px-5 text-base prose sm:prose-lg md:prose-xl prose-invert">
-                <blockquote className="text-base font-semibold">
+                <blockquote
+                  className="text-base font-semibold italic tracking-normal sm:tracking-widest leading-loose
+                hover:text-gray-400 transition ease-in-out duration-200 cursor-pointer
+                "
+                >
                   {post?.description}
                 </blockquote>
               </div>
@@ -207,7 +211,7 @@ export default async function Post({ params: { slug } }: Props) {
           {/* FOOTER */}
           <BlogCards
             className="pt-8 sm:pt-16"
-            numPosts={topTwo.length}
+            numPosts="Latest Posts"
             posts={topTwo}
           />
           <BlogFooter
