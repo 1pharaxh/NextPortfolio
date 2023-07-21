@@ -11,6 +11,7 @@ import CodeBlock from "@/components/CodeBlock";
 import { getImageDimensions } from "@sanity/asset-utils";
 import Head from "next/head";
 import BreadCrumbs from "@/components/BreadCrumbs";
+import { formatDate } from "@/sanity/lib/formatDate";
 type Props = {
   params: {
     slug: string;
@@ -124,60 +125,65 @@ export default async function Post({ params: { slug } }: Props) {
             </h1>
 
             {/* IMAGE  */}
-            <div className="mx-auto max-w-2xl">
-              <>
-                <div className="relative mb-4 md:mb-8">
-                  <Image
-                    alt={post?.mainImage?.alt || " Main blog image "}
-                    src={builder
-                      .image(post?.mainImage)
-                      .width(800)
-                      .height(500)
-                      .url()}
-                    width={800}
-                    height={500}
-                    className="h-auto w-full rounded-xl shadow-xl text-transparent"
-                  />
-                  <div
-                    className="absolute bottom-0 w-full bg-black 
-              bg-opacity-20 backdrop-blur-lg  drop-shadow-lg
-            p-5 flex justify-between rounded-xl items-center
-          "
-                  >
-                    <span className="font-semibold text-slate-200 text-base flex flex-col gap-2">
-                      <Image
-                        src={builder
-                          .image(post?.author?.image || " Author image")
-                          .width(200)
-                          .height(200)
-                          .url()}
-                        width={32}
-                        height={32}
-                        alt={post?.author?.name}
-                        className="rounded-full"
-                      />
-                      {post?.author?.name}
-                    </span>
-                    <div className="flex gap-2">
-                      {post?.categories?.map(
-                        (category: SanityDocument, index: number) => (
-                          <p
-                            key={index}
-                            style={{
-                              color: category.color,
-                              borderColor: category.color,
-                            }}
-                            className={`text-sm  font-semibold rounded-lg border p-2`}
-                          >
-                            {category.title}
-                          </p>
-                        )
-                      )}
-                    </div>
+
+            <div className=" mx-auto max-w-2xl flex flex-col gap-5 sm:gap-8 sm:mb-0 mb-10">
+              <div className=" w-full px-0 sm:px-5 flex justify-between items-center">
+                <div className="flex flex-col gap-1 sm:gap-3">
+                  <span className="font-semibold text-slate-200 text-base sm:text-lg flex flex-col sm:flex-row sm:items-center gap-2">
+                    <Image
+                      src={builder
+                        .image(post?.author?.image || " Author image")
+                        .width(200)
+                        .height(200)
+                        .url()}
+                      width={32}
+                      height={32}
+                      alt={post?.author?.name}
+                      className="rounded-full"
+                    />
+                    {post?.author?.name}
+                  </span>
+                  <div className="hidden sm:block text-base">
+                    {formatDate(post?.publishedAt)}
                   </div>
                 </div>
-              </>
-              <div className="mb-6 text-lg">April 10, 2023</div>
+                <div className="flex gap-2">
+                  {post?.categories?.map(
+                    (category: SanityDocument, index: number) => (
+                      <p
+                        key={index}
+                        style={{
+                          color: category.color,
+                          borderColor: category.color,
+                        }}
+                        className={`text-sm  font-semibold rounded-lg border p-2`}
+                      >
+                        {category.title}
+                      </p>
+                    )
+                  )}
+                </div>
+              </div>
+
+              <Image
+                alt={post?.mainImage?.alt || " Main blog image "}
+                src={builder
+                  .image(post?.mainImage)
+                  .width(800)
+                  .height(500)
+                  .url()}
+                width={800}
+                height={500}
+                className="h-auto w-full rounded-xl shadow-xl text-transparent"
+              />
+              <div className="block sm:hidden text-base">
+                {formatDate(post?.publishedAt)}
+              </div>
+              <div className="px-0 sm:px-5 text-base prose sm:prose-lg md:prose-xl prose-invert">
+                <blockquote className="text-base font-semibold">
+                  {post?.description}
+                </blockquote>
+              </div>
             </div>
           </div>
           {/* CONTENT */}
