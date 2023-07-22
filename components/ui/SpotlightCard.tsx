@@ -28,12 +28,12 @@ export default function SpotlightCard({
   tilt = true,
   id = "",
 }: SpotlightCardProps) {
-  if (isMobile && /iPhone/.test(navigator.userAgent)) {
-    return (
+  return tilt ? (
+    <>
       <div
         id={id}
         className={cn(
-          `relative h-full bg-slate-800 rounded-3xl p-px`,
+          `relative h-full bg-slate-800 rounded-3xl p-px block sm:hidden `,
           className
         )}
       >
@@ -46,14 +46,12 @@ export default function SpotlightCard({
           {children}
         </div>
       </div>
-    );
-  } else {
-    return tilt ? (
-      <Tilt options={defaultOptions}>
-        <div
-          id={id}
-          className={cn(
-            `relative h-full bg-slate-800 rounded-3xl p-px before:absolute before:w-80 before:h-80 
+      <div className="sm:block hidden">
+        <Tilt class options={defaultOptions}>
+          <div
+            id={id}
+            className={cn(
+              `relative h-full bg-slate-800 rounded-3xl p-px before:absolute before:w-80 before:h-80 
           before:-left-40 before:-top-40 before:bg-slate-400 before:rounded-full before:opacity-0 
           before:pointer-events-none before:transition-opacity before:duration-500 before:translate-x-[var(--mouse-x)] 
           before:translate-y-[var(--mouse-y)] before:group-hover/card:opacity-100 before:z-10 before:blur-[100px] 
@@ -61,33 +59,52 @@ export default function SpotlightCard({
           after:opacity-0 after:pointer-events-none after:transition-opacity after:duration-500 
           after:translate-x-[var(--mouse-x)] after:translate-y-[var(--mouse-y)] after:hover:opacity-10 
           after:z-30 after:blur-[100px] overflow-hidden `,
-            className
-          )}
-        >
-          <div
-            className={cn(
-              `relative h-full bg-slate-900 rounded-[inherit] z-[15] overflow-hidden`,
               className
             )}
           >
-            {gradient && (
-              <div
-                className="absolute bottom-0 translate-y-1/2 left-1/2 -translate-x-1/2 
+            <div
+              className={cn(
+                `relative h-full bg-slate-900 rounded-[inherit] z-[15] overflow-hidden`,
+                className
+              )}
+            >
+              {gradient && (
+                <div
+                  className="absolute bottom-0 translate-y-1/2 left-1/2 -translate-x-1/2 
                 pointer-events-none -z-10 w-1/2 aspect-square"
-                aria-hidden="true"
-              >
-                <div className="absolute inset-0 translate-z-0 bg-slate-800 rounded-full blur-[80px]"></div>
-              </div>
-            )}
-            {children}
+                  aria-hidden="true"
+                >
+                  <div className="absolute inset-0 translate-z-0 bg-slate-800 rounded-full blur-[80px]"></div>
+                </div>
+              )}
+              {children}
+            </div>
           </div>
-        </div>
-      </Tilt>
-    ) : (
+        </Tilt>
+      </div>
+    </>
+  ) : (
+    <>
       <div
         id={id}
         className={cn(
-          `relative h-full bg-slate-800 rounded-3xl p-px before:absolute before:w-80 before:h-80 
+          `relative h-full bg-slate-800 rounded-3xl p-px block sm:hidden `,
+          className
+        )}
+      >
+        <div
+          className={cn(
+            `relative h-full bg-slate-900 rounded-[inherit] z-[15] overflow-hidden`,
+            className
+          )}
+        >
+          {children}
+        </div>
+      </div>
+      <div
+        id={id}
+        className={cn(
+          `relative h-full bg-slate-800 rounded-3xl p-px before:absolute before:w-80 before:h-80 hidden sm:block
       before:-left-40 before:-top-40 before:bg-slate-400 before:rounded-full before:opacity-0 
       before:pointer-events-none before:transition-opacity before:duration-500 before:translate-x-[var(--mouse-x)] 
       before:translate-y-[var(--mouse-y)] before:group-hover/card:opacity-100 before:z-10 before:blur-[100px] 
@@ -117,8 +134,8 @@ export default function SpotlightCard({
           {children}
         </div>
       </div>
-    );
-  }
+    </>
+  );
 }
 
 // after:bg-indigo-200 this is the color of the spotlight
