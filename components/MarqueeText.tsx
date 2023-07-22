@@ -4,13 +4,6 @@ interface MarqueeTextProps {
   text?: string;
 }
 
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      MarqueeText: MarqueeTextProps;
-    }
-  }
-}
 export default function MarqueeText({ text = "" }: MarqueeTextProps) {
   return (
     <div className={style["container"]}>

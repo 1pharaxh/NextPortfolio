@@ -9,11 +9,13 @@ import ProjectCard from "@/components/ProjectCard";
 import SearchButton from "@/components/SearchButton";
 import Image from "next/image";
 import { Spotlight } from "@/components/ui/card";
-import dynamic from "next/dynamic";
-
-const SpotlightCard = dynamic(() => import("@/components/ui/SpotlightCard"), {
-  ssr: false,
-});
+import MarqueeTextBlog from "@/components/MarqueeTextBlog";
+import Link from "next/link";
+import SpotlightCard from "@/components/ui/SpotlightCard";
+// import dynamic from "next/dynamic";
+// const SpotlightCard = dynamic(() => import("@/components/ui/SpotlightCard"), {
+//   ssr: false,
+// });
 
 const projectArr = [
   {
@@ -108,92 +110,105 @@ const projectArr = [
 ];
 export default function Home() {
   return (
-    <main
-      id="homeSection"
-      className={`flex min-h-screen gap-2 flex-col md:items-center px-4 py-4 md:px-16 md:py-16 lg:px-32 lg:py-16 `}
-    >
-      {/* <Spotlight className="max-w-sm mx-auto grid gap-2 lg:grid-cols-3 items-start lg:max-w-none group">
+    <>
+      <main
+        id="homeSection"
+        className={`flex min-h-screen gap-2 flex-col md:items-center px-4 py-4 md:px-16 md:py-16 lg:px-32 lg:py-16 `}
+      >
+        {/* <Spotlight className="max-w-sm mx-auto grid gap-2 lg:grid-cols-3 items-start lg:max-w-none group">
 
       </Spotlight> */}
-      <SearchButton />
-      <Spotlight className="container mx-auto flex flex-col w-full items-center md:items-stretch gap-2 group/card">
-        {/* Name and Socials  */}
-        <div className="flex flex-col md:flex-row w-full gap-2">
-          <div className="flex-initial w-full md:w-4/6">
-            <SpotlightCard gradient={true}>
-              <NameCard />
-            </SpotlightCard>
-          </div>
-          <div className="flex-initial w-full md:w-2/6">
-            <SpotlightCard gradient={false} tilt={false}>
-              <SocialsCard />
-            </SpotlightCard>
-          </div>
-        </div>
-        {/* About and Tech Stack */}
-        <div className="flex flex-col lg:flex-row w-full gap-2">
-          <div className="flex-initial w-full lg:w-2/6 ">
-            <SpotlightCard gradient={true}>
-              <TechStackCard className="flex-grow" />
-            </SpotlightCard>
-          </div>
-          <div className="flex-initial w-full lg:w-4/6">
-            <SpotlightCard gradient={false} tilt={false}>
-              <AboutCard />
-            </SpotlightCard>
-          </div>
-        </div>
-        {/* Work Experience, Resume and Project Section  */}
-        <div className="flex flex-col md:flex-row w-full gap-2">
-          <div className="flex-initial w-full md:w-3/6 lg:w-4/6">
-            <SpotlightCard
-              id="workexperiencesection"
-              gradient={true}
-              tilt={false}
-            >
-              <ExperienceCard />
-            </SpotlightCard>
-          </div>
-          <div className=" w-full md:w-3/6 lg:w-2/6">
-            <Spotlight className="flex flex-col h-full gap-2 justify-between group/card">
-              <SpotlightCard
-                id="resumesection"
-                className="flex-grow "
-                gradient={true}
-              >
-                <ResumeCard />
+        <SearchButton />
+        <Spotlight className="container mx-auto flex flex-col w-full items-center md:items-stretch gap-2 group/card">
+          {/* Name and Socials  */}
+          <div className="flex flex-col md:flex-row w-full gap-2">
+            <div className="flex-initial w-full md:w-4/6">
+              <SpotlightCard gradient={true}>
+                <NameCard />
               </SpotlightCard>
+            </div>
+            <div className="flex-initial w-full md:w-2/6">
+              <SpotlightCard gradient={false} tilt={false}>
+                <SocialsCard />
+              </SpotlightCard>
+            </div>
+          </div>
+          <Link
+            href="/blog"
+            className="cursor-pointer h-full flex flex-col rounded overflow-hidden w-full"
+          >
+            <MarqueeTextBlog
+              textLeading="Click here to"
+              textEnd="Explore my Blog!"
+            />
+          </Link>
+          {/* About and Tech Stack */}
+          <div className="flex flex-col lg:flex-row w-full gap-2">
+            <div className="flex-initial w-full lg:w-2/6 ">
+              <SpotlightCard gradient={true}>
+                <TechStackCard className="flex-grow" />
+              </SpotlightCard>
+            </div>
+            <div className="flex-initial w-full lg:w-4/6">
+              <SpotlightCard gradient={false} tilt={false}>
+                <AboutCard />
+              </SpotlightCard>
+            </div>
+          </div>
+          {/* Work Experience, Resume and Project Section  */}
+          <div className="flex flex-col md:flex-row w-full gap-2">
+            <div className="flex-initial w-full md:w-3/6 lg:w-4/6">
               <SpotlightCard
-                className="flex-grow "
+                id="workexperiencesection"
                 gradient={true}
                 tilt={false}
               >
-                <CodeBlockCard
-                  numProjects={projectArr.length}
-                  text="
-              I love to code and I'm always working on something new. Here are some of my projects:"
-                />
+                <ExperienceCard />
               </SpotlightCard>
-            </Spotlight>
+            </div>
+            <div className=" w-full md:w-3/6 lg:w-2/6">
+              <Spotlight className="flex flex-col h-full gap-2 justify-between group/card">
+                <SpotlightCard
+                  id="resumesection"
+                  className="flex-grow "
+                  gradient={true}
+                >
+                  <ResumeCard />
+                </SpotlightCard>
+                <SpotlightCard
+                  className="flex-grow "
+                  gradient={true}
+                  tilt={false}
+                >
+                  <CodeBlockCard
+                    numProjects={projectArr.length}
+                    text="
+              I love to code and I'm always working on something new. Here are some of my projects:"
+                  />
+                </SpotlightCard>
+              </Spotlight>
+            </div>
           </div>
-        </div>
-        {/* Project section  */}
+          {/* Project section  */}
 
-        <ProjectCard projectArr={projectArr} />
-        <SpotlightCard gradient={false} tilt={false}>
-          <div className="p-4 ">
-            Written in Typescript, React, NextJs and tailwindcss, deployed with{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              width={70}
-              height={70}
-              className="inline-block ml-1 mr-1 "
-            />
-            . Created by <span className="font-semibold">Akarshan Mishra.</span>
-          </div>
-        </SpotlightCard>
-      </Spotlight>
-    </main>
+          <ProjectCard projectArr={projectArr} />
+          <SpotlightCard gradient={false} tilt={false}>
+            <div className="p-4 ">
+              Written in Typescript, React, NextJs and tailwindcss, deployed
+              with{" "}
+              <Image
+                src="/vercel.svg"
+                alt="Vercel Logo"
+                width={70}
+                height={70}
+                className="inline-block ml-1 mr-1 "
+              />
+              . Created by{" "}
+              <span className="font-semibold">Akarshan Mishra.</span>
+            </div>
+          </SpotlightCard>
+        </Spotlight>
+      </main>
+    </>
   );
 }
