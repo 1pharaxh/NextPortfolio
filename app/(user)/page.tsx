@@ -194,7 +194,7 @@ export default async function Home() {
                 gradient={true}
                 tilt={false}
               >
-                <ExperienceCard />
+                <ExperienceCard data={data?.experience} />
               </SpotlightCard>
             </div>
             <div className=" w-full md:w-3/6 lg:w-2/6">
@@ -213,7 +213,7 @@ export default async function Home() {
                 >
                   <CodeBlockCard
                     numProjects={projectArr.length}
-                    text="I love to code and I'm always working on something new. Here are some of my projects:"
+                    text={data?.codeblockText}
                   />
                 </SpotlightCard>
               </Spotlight>
