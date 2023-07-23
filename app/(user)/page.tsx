@@ -9,9 +9,9 @@ import ProjectCard from "@/components/ProjectCard";
 import SearchButton from "@/components/SearchButton";
 import Image from "next/image";
 import { Spotlight } from "@/components/ui/card";
-import MarqueeTextBlog from "@/components/MarqueeTextBlog";
-import Link from "next/link";
+
 import SpotlightCard from "@/components/ui/SpotlightCard";
+import HomeBlogMarqueeText from "@/components/HomeBlogMarqueeText";
 // import dynamic from "next/dynamic";
 // const SpotlightCard = dynamic(() => import("@/components/ui/SpotlightCard"), {
 //   ssr: false,
@@ -127,21 +127,15 @@ export default function Home() {
                 <NameCard />
               </SpotlightCard>
             </div>
+            <HomeBlogMarqueeText className="md:hidden flex" />
             <div className="flex-initial w-full md:w-2/6">
               <SpotlightCard gradient={false} tilt={false}>
                 <SocialsCard />
               </SpotlightCard>
             </div>
           </div>
-          <Link
-            href="/blog"
-            className="cursor-pointer h-full flex flex-col rounded overflow-hidden w-full"
-          >
-            <MarqueeTextBlog
-              textLeading="Click here to"
-              textEnd="Explore my Blog!"
-            />
-          </Link>
+          <HomeBlogMarqueeText className="hidden md:flex" />
+
           {/* About and Tech Stack */}
           <div className="flex flex-col lg:flex-row w-full gap-2">
             <div className="flex-initial w-full lg:w-2/6 ">

@@ -44,7 +44,7 @@
   }
    .marquee__inner span {
     font-size: 1rem;
-    padding: 0 2vw;
+    padding: 0 0.6vw;
     text-transform: uppercase;
   }
    .marquee .first {
@@ -58,5 +58,14 @@
    .marquee .second {
     transform: translate3d(var(--final-initial), 0, 0);
     animation: marqueeTwo 300s linear infinite;
+
   }
   
+
+
+  @media screen and (max-width: 768px) {
+    .marquee__inner span {
+      font-size: 1.2rem;
+      padding: 0 2vw;
+    }
+  }
