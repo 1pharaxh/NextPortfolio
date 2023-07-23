@@ -1,44 +1,61 @@
+import { SanityDocument } from "next-sanity";
 import StarText from "./StarText";
+import { PortableText } from "@portabletext/react";
 
-const AboutCard = ({ className }: { className?: string }) => {
-  return (
-    <>
+const Block = ({ value, isInline }: { value: any; isInline: boolean }) => {
+  const { style = "normal", children } = value;
+  const elements = children.map((child: any) => {
+    if (child.marks.includes("strong")) {
+      return <StarText key={child._key}>{child.text}</StarText>;
+    }
+    return child.text;
+  });
+  if (style === "normal") {
+    return (
       <div
-        className=" overflow-hidden flex flex-col 
-      px-4 py-4 justify-center items-start h-full    "
+        className="text-base md:text-lg lg:text-base xl:text-lg 
+    m-0 p-0  text-white opacity-100"
       >
-        <div className="flex flex-col gap-3">
-          <div
-            className={`m-0  text-base md:text-lg lg:text-base xl:text-lg opacity-100`}
-          >
-            Hi, I'm Akarshan Mishra, a
-            <StarText>Frontend, Backend and Flutter Developer</StarText>
-            based in Edmonton, 🍁 CA. I am deeply passionate about creating
-            applications that people enjoy using every day, and I strive to
-            deliver high-quality products that meet the needs of users.
-          </div>
-
-          <div
-            className={`m-0  text-base md:text-lg lg:text-base xl:text-xl opacity-100`}
-          >
-            As a programmer, I have a strong command over a range of programming
-            languages, including
-            <StarText>JavaScript, Python, C++, Java, and Dart.</StarText>
-            When I'm not coding, I'm always looking to expand my knowledge and
-            explore new ideas and concepts related to computing, economics, or
-            mathematics.
-          </div>
-
-          <div
-            className={`m-0  text-base md:text-lg lg:text-base xl:text-xl opacity-100`}
-          >
-            you're interested in working with me or learning moreIf about my
-            skills and experience, please don't hesitate
-            <StarText> to get in touch! </StarText>
-          </div>
-        </div>
+        {elements}
       </div>
-    </>
+    );
+  }
+  // handle other styles as needed
+  return null;
+};
+
+const components = {
+  marks: {
+    strong: ({ children }: { children: React.ReactNode }) => {
+      return <StarText>{children}</StarText>;
+    },
+  },
+  types: {
+    block: Block,
+  },
+  list: {
+    bullet: ({ children }: { children: React.ReactNode }) => (
+      <ul className=" list-disc list-inside ml-3">{children}</ul>
+    ),
+  },
+};
+const AboutCard = ({
+  className,
+  body,
+}: {
+  className?: string;
+  body: SanityDocument;
+}) => {
+  return (
+    <div
+      className=" overflow-hidden flex flex-col 
+      px-4 py-4 justify-center items-start h-full"
+    >
+      <div className="flex flex-col gap-3">
+        {/* @ts-ignore */}
+        <PortableText value={body} components={components} />
+      </div>
+    </div>
   );
 };
 

@@ -40,8 +40,8 @@ export default defineType({
       type: "image",
       title: "Metadata Image",
       description: "Image to help with SEO",
-      validation: (Rule) => Rule.required(),
       options: { hotspot: true },
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "linkedin",
@@ -86,7 +86,7 @@ export default defineType({
             { name: "companyName", type: "string", title: "Company Name" },
             { name: "jobTitle", type: "string", title: "Job Title" },
             { name: "startDate", type: "string", title: "Start Date" },
-            { name: "endDate", type: "string", title: "Start Date" },
+            { name: "endDate", type: "string", title: "End Date" },
             {
               name: "description",
               title: "Description",

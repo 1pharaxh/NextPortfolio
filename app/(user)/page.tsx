@@ -12,6 +12,10 @@ import { Spotlight } from "@/components/ui/card";
 
 import SpotlightCard from "@/components/ui/SpotlightCard";
 import HomeBlogMarqueeText from "@/components/HomeBlogMarqueeText";
+import { getHomeData, getHomeMetaData } from "@/sanity/lib/queries";
+import { SanityDocument } from "next-sanity";
+import { cachedClient } from "@/sanity/lib/client";
+import { builder } from "@/sanity/lib/builder";
 // import dynamic from "next/dynamic";
 // const SpotlightCard = dynamic(() => import("@/components/ui/SpotlightCard"), {
 //   ssr: false,
@@ -108,7 +112,37 @@ const projectArr = [
       "https://user-images.githubusercontent.com/93630550/184044160-baf0f193-83d5-475f-9d9a-dbb2abf70131.png",
   },
 ];
-export default function Home() {
+export async function generateMetadata() {
+  const data = await cachedClient(getHomeMetaData);
+  return {
+    title: data?.metadatatitle,
+    description: data?.metadatadescription,
+    creator: data?.metadatacreator,
+    keywords: data?.metadatakeywords,
+    openGraph: {
+      title: data?.metadatatitle,
+      description: data?.metadatadescription,
+      siteName: "Akarshan Mishra's Blog",
+      locale: "en_US",
+      type: "website",
+      authors: [data?.metadatacreator, "Akarshan"],
+      images: [
+        {
+          url: builder
+            .image(data?.metadataImage)
+            .width(800)
+            .height(500)
+            .url() as string,
+          width: 800,
+          height: 500,
+          alt: " A picture of Akarshan Mishra ",
+        },
+      ],
+    },
+  };
+}
+export default async function Home() {
+  const data: SanityDocument = await cachedClient(getHomeData);
   return (
     <>
       <main
@@ -130,7 +164,10 @@ export default function Home() {
             <HomeBlogMarqueeText className="md:hidden flex" />
             <div className="flex-initial w-full md:w-2/6">
               <SpotlightCard gradient={false} tilt={false}>
-                <SocialsCard />
+                <SocialsCard
+                  LinkedInLink={data?.linkedin}
+                  gitHubLink={data?.github}
+                />
               </SpotlightCard>
             </div>
           </div>
@@ -145,7 +182,7 @@ export default function Home() {
             </div>
             <div className="flex-initial w-full lg:w-4/6">
               <SpotlightCard gradient={false} tilt={false}>
-                <AboutCard />
+                <AboutCard body={data?.about} />
               </SpotlightCard>
             </div>
           </div>
@@ -176,8 +213,7 @@ export default function Home() {
                 >
                   <CodeBlockCard
                     numProjects={projectArr.length}
-                    text="
-              I love to code and I'm always working on something new. Here are some of my projects:"
+                    text="I love to code and I'm always working on something new. Here are some of my projects:"
                   />
                 </SpotlightCard>
               </Spotlight>

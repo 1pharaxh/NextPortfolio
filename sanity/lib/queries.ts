@@ -33,3 +33,11 @@ export const getTopTwo = (
 ) => groq`*[_type == "post" && defined(slug.current) && _id != "${excludeId}"] | order(publishedAt desc)[0...2]{
   _id, title, slug, mainImage, publishedAt, description, author->{_id,name, image, bio}, categories[]->{_id, title, "color":color.hex}
 }`;
+
+export const getHomeData = groq`*[_type == "home"][0]{
+  linkedin, github, about, resumeFile, experience, codeblockText
+}`;
+
+export const getHomeMetaData = groq`*[_type == "home"][0]{
+  metadatatitle, metadatadescription, metadatacreator, metadatakeywords, metadataImage
+} `;

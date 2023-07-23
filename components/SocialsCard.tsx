@@ -10,7 +10,15 @@ interface Activity {
   level: 0 | 1 | 2 | 3 | 4;
 }
 
-export default function SocialsCard({ className }: { className?: string }) {
+export default function SocialsCard({
+  className,
+  gitHubLink,
+  LinkedInLink,
+}: {
+  className?: string;
+  gitHubLink: string;
+  LinkedInLink: string;
+}) {
   const selectLastHalfYear = (
     contributions: Array<Activity>
   ): Array<Activity> => {
@@ -39,7 +47,7 @@ export default function SocialsCard({ className }: { className?: string }) {
         )}
       >
         <div
-          onClick={() => window.open("https://github.com/1pharaxh", "_blank")}
+          onClick={() => window.open(gitHubLink, "_blank")}
           className="h-full w-2/4 hover:w-3/4 bg-black flex flex-col justify-center items-center 
           rounded-tl-3xl rounded-bl-3xl cursor-pointer transition-all duration-300 group/socials-card"
         >
@@ -70,9 +78,7 @@ export default function SocialsCard({ className }: { className?: string }) {
         </div>
 
         <div
-          onClick={() =>
-            window.open("https://www.linkedin.com/in/akarsm", "_blank")
-          }
+          onClick={() => window.open(LinkedInLink, "_blank")}
           className="group h-full px-2 w-2/4 hover:w-3/4 bg-blue-700 flex flex-col gap-3 justify-center rounded-tr-3xl rounded-br-3xl cursor-pointer transition-all duration-300"
         >
           <Image

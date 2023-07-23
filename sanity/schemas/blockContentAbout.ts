@@ -29,7 +29,7 @@ export default defineType({
       marks: {
         // Decorators usually describe a single property – e.g. a typographic
         // preference or highlighting
-        decorators: [{ title: "Magic Text / Underline", value: "underline" }],
+        decorators: [{ title: "Magic Text / Underline", value: "strong" }],
         // Annotations can be any object structure – e.g. a link or a footnote.
         annotations: [],
       },

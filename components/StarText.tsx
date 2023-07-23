@@ -38,7 +38,7 @@ export default function StarText({ children }: { children: React.ReactNode }) {
     }
   }, []);
   return (
-    <h1 className="inline-block px-1">
+    <h1 className="inline-block px-1 m-0">
       <span className={"magic"}>
         <span ref={starRef} className={"magic-star"}>
           <svg viewBox="0 0 512 512">
