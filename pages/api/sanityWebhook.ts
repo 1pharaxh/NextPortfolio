@@ -24,10 +24,11 @@ export default async function handler(
     await new Promise((resolve) => setTimeout(resolve, 1000));
     await res.revalidate(`/blog`);
     await res.revalidate(`/`);
+    await res.revalidate("/sitemap.xml");
 
     console.log("Revalidated");
     return res.json({
-      message: `Revalidated "/" and "/blog"`,
+      message: `Revalidated "/", "/blog" and Robots`,
     });
   } catch (err) {
     return res.status(500).send({ message: "Error revalidating" });

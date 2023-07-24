@@ -72,10 +72,12 @@ export default async function Home({ searchParams }: { searchParams: any }) {
       ? parseInt(searchParams.page)
       : 1;
   const offset: number = (currentPage - 1) * dataPerPage;
-  const paginatedPosts = await cachedClient(
-    paginatedPostsQuery(offset, dataPerPage, latestPostPublishedAt)
-  );
-
+  const paginatedPosts =
+    totalData == 1
+      ? rest
+      : await cachedClient(
+          paginatedPostsQuery(offset, dataPerPage, latestPostPublishedAt)
+        );
   let pageNumbers: number[] = [];
   for (let i = currentPage - 1; i <= currentPage + 1; i++) {
     if (i < 1) continue;
