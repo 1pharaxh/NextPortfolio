@@ -204,11 +204,10 @@ export default async function Post({ params: { slug } }: Props) {
           <article
             className="pt-4 md:pt-16 mx-auto w-full
           prose sm:prose-lg md:prose-xl prose-invert
-          prose-h1:bg-gradient-to-br prose-h1:from-green-200 prose-h1:to-green-500 prose-h1:bg-clip-text prose-h1:text-transparent prose-h1:my-0 
-          prose-h2:bg-gradient-to-br prose-h2:from-red-200 prose-h2:to-red-500 prose-h2:bg-clip-text prose-h2:text-transparent prose-h2:my-0 
-          prose-h3:bg-gradient-to-br prose-h3:from-amber-200 prose-h3:to-amber-500 prose-h3:bg-clip-text prose-h3:text-transparent prose-h3:my-0 
-          prose-h4:bg-gradient-to-br prose-h4:from-fuchsia-200 prose-h4:to-fuchsia-500 prose-h4:bg-clip-text prose-h4:text-transparent prose-h4:my-0
-         prose-blockquote:mt-0 prose-blockquote:mb-0 prose-blockquote:pt-0 prose-blockquote:pb-0  prose-blockquote:my-0 prose-blockquote:py-0
+          prose-h1:bg-gradient-to-br prose-h1:from-green-200 prose-h1:to-green-500 prose-h1:bg-clip-text prose-h1:text-transparent prose-h1:my-0 prose-h1:leading-tight
+          prose-h2:bg-gradient-to-br prose-h2:from-red-200 prose-h2:to-red-500 prose-h2:bg-clip-text prose-h2:text-transparent prose-h2:my-0 prose-h2:leading-tight
+          prose-h3:bg-gradient-to-br prose-h3:from-amber-200 prose-h3:to-amber-500 prose-h3:bg-clip-text prose-h3:text-transparent prose-h3:my-0 prose-h3:leading-tight
+          prose-h4:bg-gradient-to-br prose-h4:from-fuchsia-200 prose-h4:to-fuchsia-500 prose-h4:bg-clip-text prose-h4:text-transparent prose-h4:my-0 prose-h4:leading-tight
          prose-li:mt-0 prose-li:mb-0 prose-li:pt-0 prose-li:pb-0 prose-li:my-0 prose-li:py-0
           "
           >

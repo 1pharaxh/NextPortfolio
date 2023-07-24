@@ -78,9 +78,9 @@ export default function BlogRecentCard({
       </div>
       <div className="mb-8 md:mb-28 md:grid md:grid-cols-2 md:gap-x-16 lg:gap-x-8">
         <div>
-          <h3 className="mb-4 text-4xl leading-tight lg:text-5xl">
+          <h3 className="mb-4 text-4xl lg:text-5xl line-clamp-2">
             <Link
-              className="hover:underline decoration-blue-500 line-clamp-2"
+              className="hover:underline decoration-blue-500 leading-tight"
               href={`/post/${firstPost?.slug.current}`}
             >
               {firstPost?.title}
