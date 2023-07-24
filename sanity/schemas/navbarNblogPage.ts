@@ -48,13 +48,14 @@ export default defineType({
       type: "object",
       title: "Navbar",
       fields: [
-        { name: "firstTitle", type: "string", title: "Name" },
-        { name: "lastTitle", type: "string", title: "Name" },
+        { name: "firstTitle", type: "string", title: "First Title" },
+        { name: "lastTitle", type: "string", title: "First Title" },
         {
-          name: "blogDescription",
+          name: "navbarDescription",
           type: "blockContentAbout",
-          title: "Blog Description",
+          title: "Nav Bar Description",
         },
+        { name: "blogDescription", type: "string", title: "Blog Description" },
       ],
       validation: (Rule) => Rule.required(),
       description: "Navbar Data",

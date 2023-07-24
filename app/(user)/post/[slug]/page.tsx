@@ -3,7 +3,12 @@ import BlogNavbar from "@/components/BlogNavbar";
 import SearchButton from "@/components/SearchButton";
 import { builder } from "@/sanity/lib/builder";
 import { cachedClient } from "@/sanity/lib/client";
-import { getMetaData, getTopTwo, postQuery } from "@/sanity/lib/queries";
+import {
+  getMetaData,
+  getNavbarData,
+  getTopTwo,
+  postQuery,
+} from "@/sanity/lib/queries";
 import { PortableText } from "@portabletext/react";
 import { SanityDocument } from "next-sanity";
 import Image from "next/image";
@@ -105,6 +110,9 @@ export async function generateMetadata({ params: { slug } }: Props) {
 
 export default async function Post({ params: { slug } }: Props) {
   const post = await cachedClient<SanityDocument>(postQuery, { slug });
+  let navbarData = await getNavbarData();
+  navbarData = navbarData.navbar;
+
   let topTwo = await cachedClient(getTopTwo(post?._id));
 
   return (
@@ -113,9 +121,10 @@ export default async function Post({ params: { slug } }: Props) {
       <div className="min-h-screen container mx-auto max-w-4xl px-5">
         <div className=" grid grid-cols-1 gap-4 md:gap-16 divide-blue-100 divide-y">
           <BlogNavbar
-            firstTitle="Akarshan's"
-            lastTitle="Blog"
+            firstTitle={navbarData.firstTitle}
+            lastTitle={navbarData.lastTitle}
             blogDescription=""
+            navBarDescription={navbarData.navbarDescription}
           />
           <div className="pt-4 md:pt-16">
             <BreadCrumbs className="mb-4" />

@@ -1,5 +1,10 @@
-import { cachedClient } from "@/sanity/lib/client";
-import { postsQuery, paginatedPostsQuery } from "@/sanity/lib/queries";
+import { cachedClient, client } from "@/sanity/lib/client";
+import {
+  postsQuery,
+  paginatedPostsQuery,
+  getBlogMetaData,
+  getNavbarData,
+} from "@/sanity/lib/queries";
 import BlogNavbar from "@/components/BlogNavbar";
 import BlogRecentCard from "@/components/BlogRecentCard";
 import BlogCards from "@/components/BlogCards";
@@ -7,9 +12,43 @@ import Link from "next/link";
 import BlogFooter from "@/components/BlogFooter";
 import SearchButton from "@/components/SearchButton";
 import BreadCrumbs from "@/components/BreadCrumbs";
+import { builder } from "@/sanity/lib/builder";
+
+export async function generateMetadata() {
+  const data = await cachedClient(getBlogMetaData);
+  return {
+    title: data?.metadatatitle,
+    description: data?.metadatadescription,
+    creator: data?.metadatacreator,
+    keywords: data?.metadatakeywords,
+    openGraph: {
+      title: data?.metadatatitle,
+      description: data?.metadatadescription,
+      siteName: "Akarshan Mishra's Blog",
+      locale: "en_US",
+      type: "website",
+      authors: [data?.metadatacreator, "Akarshan"],
+      images: [
+        {
+          url: builder
+            .image(data?.metadataImage)
+            .width(800)
+            .height(500)
+            .url() as string,
+          width: 800,
+          height: 500,
+          alt: " A picture of Akarshan Mishra ",
+        },
+      ],
+    },
+  };
+}
 // searchParams is the query string from the URL
 export default async function Home({ searchParams }: { searchParams: any }) {
   let posts = await cachedClient(postsQuery);
+  let navbarData = await getNavbarData();
+  navbarData = navbarData.navbar;
+
   const [firstPost, ...rest] = posts;
   posts = rest;
   const latestPostPublishedAt = firstPost.publishedAt;
@@ -41,10 +80,10 @@ export default async function Home({ searchParams }: { searchParams: any }) {
         <div className="min-h-screen container mx-auto max-w-4xl px-5">
           <div className=" grid grid-cols-1 gap-4 md:gap-16 divide-blue-100 divide-y">
             <BlogNavbar
-              firstTitle="Akarshan's"
-              lastTitle="Blog"
-              blogDescription="Welcome to my blog. Here you can expect to find posts about tech,
-        design, side projects, AI and everything inbetween."
+              firstTitle={navbarData?.firstTitle}
+              lastTitle={navbarData?.lastTitle}
+              blogDescription={navbarData?.blogDescription}
+              navBarDescription={navbarData?.navbarDescription}
             />
             <div>
               <BreadCrumbs className="pt-4" />

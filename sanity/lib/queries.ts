@@ -1,4 +1,5 @@
 import { groq } from "next-sanity";
+import { client } from "./client";
 
 // Get all posts
 export const postsQuery = groq`*[_type == "post" && defined(slug.current)] | order(publishedAt desc){
@@ -41,3 +42,15 @@ export const getHomeData = groq`*[_type == "home"][0]{
 export const getHomeMetaData = groq`*[_type == "home"][0]{
   metadatatitle, metadatadescription, metadatacreator, metadatakeywords, metadataImage
 } `;
+
+export const getBlogMetaData = groq`*[_type == "navbarNblogPage"][0]{
+  metadatatitle, metadatadescription, metadatacreator, metadatakeywords, metadataImage, navbar
+} `;
+
+export async function getNavbarData() {
+  return client.fetch(
+    groq`*[_type == "navbarNblogPage"][0]{
+  navbar
+} `
+  );
+}

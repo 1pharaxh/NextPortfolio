@@ -38,6 +38,8 @@ export default defineType({
     }),
     defineField({
       name: "mainImage",
+      description:
+        "Main image of the post, this will be used in the blog page and in the SEO",
       title: "Main image",
       type: "image",
       options: {
@@ -74,7 +76,6 @@ export default defineType({
       title: "title",
       author: "author.name",
       media: "mainImage",
-      description: "description",
     },
     prepare(selection) {
       const { author } = selection;
