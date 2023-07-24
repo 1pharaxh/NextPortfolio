@@ -20,14 +20,25 @@ export default defineType({
       },
     }),
     defineField({
-      name: "metadata",
-      title: "Meta Data",
+      name: "metadatatitle",
       type: "string",
+      description: "Metadata title to help with SEO",
+      title: "Metadata Title",
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: "metadatakeywords",
+      type: "array",
+      title: "Metadata Keywords",
+      of: [{ type: "string" }],
+      description: "MetaData keywords to help with SEO",
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "description",
       title: "Description",
-      description: "Enter a short description of the post",
+      description:
+        "Enter a short description of the post, this will be used in the SEO / Metadata",
       type: "string",
     }),
     defineField({

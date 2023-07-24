@@ -1,5 +1,6 @@
 import { builder } from "@/sanity/lib/builder";
 import { formatDate } from "@/sanity/lib/formatDate";
+import { Frown } from "lucide-react";
 import { SanityDocument } from "next-sanity";
 import Image from "next/image";
 import Link from "next/link";
@@ -19,6 +20,12 @@ export default function BlogCards({
         {numPosts}
       </h2>
       <div className="grid grid-cols-1 gap-y-14 md:grid-cols-2 md:gap-x-16 md:gap-y-16 lg:gap-x-32">
+        {posts.length === 0 ? (
+          <div className="flex gap-2 items-center ">
+            <Frown />
+            <p>No posts found</p>
+          </div>
+        ) : null}
         {posts.map((post: SanityDocument, index: number) => (
           <div key={index} className=" flex flex-col">
             {post?.mainImage ? (

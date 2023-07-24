@@ -14,7 +14,6 @@ import { SanityDocument } from "next-sanity";
 import Image from "next/image";
 import CodeBlock from "@/components/CodeBlock";
 import { getImageDimensions } from "@sanity/asset-utils";
-import Head from "next/head";
 import BreadCrumbs from "@/components/BreadCrumbs";
 import { formatDate } from "@/sanity/lib/formatDate";
 import BlogCards from "@/components/BlogCards";
@@ -81,17 +80,17 @@ const components = {
 export async function generateMetadata({ params: { slug } }: Props) {
   const post = await cachedClient<SanityDocument>(getMetaData, { slug });
   return {
-    title: post?.metadata,
+    title: post?.metadatatitle,
     description: post?.description,
-    creator: "Akarshan Mishra",
-    keywords: ["Leetcode", "Coding Interview", "Software Development"],
+    creator: post?.metacreator,
+    keywords: post?.metadatakeywords,
     openGraph: {
       title: post?.metadata,
       description: post?.description,
       siteName: "Akarshan Mishra's Blog",
       locale: "en_US",
       type: "website",
-      authors: ["Akarshan Mishra", "Akarshan"],
+      authors: [post?.metacreator, "Akarshan"],
       images: [
         {
           url: builder
