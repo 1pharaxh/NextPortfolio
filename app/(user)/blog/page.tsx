@@ -16,10 +16,21 @@ import { builder } from "@/sanity/lib/builder";
 
 export async function generateMetadata() {
   const data = await cachedClient(getBlogMetaData);
+  if (data === null || data === undefined) {
+    return {
+      title: "Not found",
+      description: "This page is not found",
+      creator: "Akarshan Mishra",
+      keywords: "Akarshan Mishra, Akarshan, Mishra, Blog",
+    };
+  }
   return {
     title: data?.metadatatitle,
     description: data?.metadatadescription,
     creator: data?.metadatacreator,
+    alternates: {
+      canonical: `/blog`,
+    },
     keywords: data?.metadatakeywords,
     openGraph: {
       title: data?.metadatatitle,

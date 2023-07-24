@@ -2,12 +2,8 @@ import "@/styles/globals.css";
 import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import Script from "next/script";
+import { Metadata } from "next";
 const inter = Inter({ subsets: ["latin"] });
-
-export const metadata = {
-  title: "Akarshan Mishra",
-  description: "Akarshan Mishras personal website",
-};
 
 export default function RootLayout({
   children,
@@ -25,7 +21,7 @@ export default function RootLayout({
   y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
 })(window, document, "clarity", "script", "gzo6f1slbt");`,
         }}
-      ></Script>
+      />
       <Analytics />
       <body className={inter.className}>
         {/* Give Grid Background */}

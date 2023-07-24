@@ -79,9 +79,20 @@ const components = {
 
 export async function generateMetadata({ params: { slug } }: Props) {
   const post = await cachedClient<SanityDocument>(getMetaData, { slug });
+  if (post === null || post === undefined) {
+    return {
+      title: "Not found",
+      description: "This page is not found",
+      creator: "Akarshan Mishra",
+      keywords: "Akarshan Mishra, Akarshan, Mishra, Blog",
+    };
+  }
   return {
     title: post?.metadatatitle,
     description: post?.description,
+    alternates: {
+      canonical: `/post/${slug}`,
+    },
     creator: post?.metacreator,
     keywords: post?.metadatakeywords,
     openGraph: {
@@ -89,7 +100,7 @@ export async function generateMetadata({ params: { slug } }: Props) {
       description: post?.description,
       siteName: "Akarshan Mishra's Blog",
       locale: "en_US",
-      type: "website",
+      type: "article",
       authors: [post?.metacreator, "Akarshan"],
       images: [
         {

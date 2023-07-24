@@ -119,6 +119,9 @@ export async function generateMetadata() {
     description: data?.metadatadescription,
     creator: data?.metadatacreator,
     keywords: data?.metadatakeywords,
+    alternates: {
+      canonical: `/`,
+    },
     openGraph: {
       title: data?.metadatatitle,
       description: data?.metadatadescription,
