@@ -38,7 +38,7 @@ export const getTopTwo = (
 }`;
 
 export const getHomeData = groq`*[_type == "home"][0]{
-  linkedin, github, about, resumeFile, experience, codeblockText
+  linkedin, github, about, "resumeFile": resumeFile.asset->url, experience, codeblockText
 }`;
 
 export const getHomeMetaData = groq`*[_type == "home"][0]{

@@ -1,10 +1,10 @@
 import MarqueeText from "@/components/MarqueeText";
 import Link from "next/link";
 
-export default function ResumeCard() {
+export default function ResumeCard({ file }: { file: string }) {
   return (
     <Link
-      href="/resume_akarshan_mishra.pdf"
+      href={file}
       passHref
       className="cursor-pointer card group h-full flex flex-col py-2 rounded-3xl overflow-hidden"
     >

@@ -122,7 +122,7 @@ export default async function Home() {
                   className="flex-grow "
                   gradient={true}
                 >
-                  <ResumeCard />
+                  <ResumeCard file={data?.resumeFile} />
                 </SpotlightCard>
                 <SpotlightCard
                   className="flex-grow "
