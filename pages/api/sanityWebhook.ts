@@ -30,6 +30,6 @@ export default async function handler(
       message: `Revalidated "/", "/blog" and Robots`,
     });
   } catch (err) {
-    return res.status(500).send({ message: "Error revalidating" });
+    return res.status(500).send({ message: `Error revalidating ${err}` });
   }
 }
