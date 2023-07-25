@@ -22,7 +22,7 @@ export default function CodeBlock(data: {
           <div className="flex gap-2 items-center justify-center">
             <p className="opacity-70 pr-4">{filename}</p>
             <p>
-              lang: <span className="opacity-70">jsx</span>
+              lang: <span className="opacity-70">{language}</span>
             </p>
           </div>
           <button
