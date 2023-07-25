@@ -96,7 +96,8 @@ export async function generateMetadata({ params: { slug } }: Props) {
     creator: post?.metacreator,
     keywords: post?.metadatakeywords,
     openGraph: {
-      title: post?.metadata,
+      title: post?.metadata + " | Akarshan Mishra",
+      url: `https://akarshan.vercel.app/post/${slug}`,
       description: post?.description,
       siteName: "Akarshan Mishra's Blog",
       locale: "en_US",

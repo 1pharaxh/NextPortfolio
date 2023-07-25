@@ -36,9 +36,10 @@ export async function generateMetadata() {
       canonical: `/`,
     },
     openGraph: {
-      title: data?.metadatatitle,
+      url: "akarshan.vercel.app",
+      title: data?.metadatatitle + " | Akarshan Mishra",
       description: data?.metadatadescription,
-      siteName: "Akarshan Mishra's Blog",
+      siteName: "Akarshan Mishra's Portfolio",
       locale: "en_US",
       type: "website",
       authors: [data?.metadatacreator, "Akarshan"],
