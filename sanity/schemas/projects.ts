@@ -6,6 +6,12 @@ export default defineType({
   type: "document",
   fields: [
     {
+      name: "publishedAt",
+      type: "datetime",
+      title: "Published At",
+      validation: (Rule) => Rule.required(),
+    },
+    {
       name: "title",
       type: "string",
       title: "Title",
@@ -52,6 +58,8 @@ export default defineType({
               { title: "C++", value: "cpp" },
               { title: "Figma", value: "figma" },
               { title: "Vite", value: "vite" },
+              { title: "Django", value: "django" },
+              { title: "Vue", value: "vue" },
               { title: "GCP", value: "gcp" },
               { title: "Firebase", value: "firebase" },
               { title: "Android Studio", value: "androidstudio" },
@@ -77,7 +85,7 @@ export default defineType({
     },
     {
       name: "imageLink",
-      type: "url",
+      type: "string",
       title: "Image Link",
       validation: (Rule) => Rule.required(),
     },

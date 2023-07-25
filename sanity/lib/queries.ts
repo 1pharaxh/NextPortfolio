@@ -56,3 +56,7 @@ export async function getNavbarData() {
 } `
   );
 }
+
+export const getAllProjects = groq`*[_type == "projects"] | order(publishedAt desc){
+  _id, title, githubLink, projectLink, description, techStack, imageLink
+}`;

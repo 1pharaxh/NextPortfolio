@@ -1,32 +1,12 @@
 "use client";
 
-interface ProjectCardProps {
-  // define the props for the NameCard component here
-  projectArr?: Array<{
-    githubLink: string;
-    title: string;
-    objClass: string;
-    techStack: Array<string>;
-    description: Array<string>;
-    projectlink: string;
-    imageLink: string;
-  }>;
-  hide?: boolean;
-}
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      ProjectCard: ProjectCardProps;
-    }
-  }
-}
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import Projects from "./Projects";
 import "swiper/css/pagination";
 import { Autoplay, Pagination } from "swiper";
 import { Properties } from "csstype";
+import { SanityDocument } from "next-sanity";
 
 interface SwiperStyle extends Properties {
   "--swiper-pagination-color"?: string;
@@ -39,7 +19,10 @@ interface SwiperStyle extends Properties {
 export default function ProjectCard({
   projectArr = [],
   hide = false,
-}: ProjectCardProps) {
+}: {
+  projectArr: SanityDocument[];
+  hide?: boolean;
+}) {
   return (
     <div
       id="projectssection"
