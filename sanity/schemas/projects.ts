@@ -37,6 +37,7 @@ export default defineType({
               { title: "Express", value: "express" },
               { title: "Flutter", value: "flutter" },
               { title: "Tailwind", value: "tailwind" },
+              { title: "Tensorflow", value: "tensorflow" },
               { title: "Git", value: "git" },
               { title: "Node.js", value: "nodejs" },
               { title: "MongoDB", value: "mongodb" },
