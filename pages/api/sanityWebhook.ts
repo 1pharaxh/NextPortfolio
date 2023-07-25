@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
+import { revalidatePath } from "next/cache";
 
 type Data = { message: string };
 const secret: string =
@@ -24,7 +25,7 @@ export default async function handler(
     await new Promise((resolve) => setTimeout(resolve, 1000));
     await res.revalidate(`/blog`);
     await res.revalidate(`/`);
-    await res.revalidate("/sitemap.xml");
+    revalidatePath("/sitemap.xml");
 
     console.log("Revalidated");
     return res.json({

@@ -105,7 +105,7 @@ export default async function Home({ searchParams }: { searchParams: any }) {
             <div>
               <BlogCards
                 className="pt-16 mb-32"
-                numPosts={`${totalData} Posts`}
+                numPosts={`${totalData} Other Post[s]`}
                 posts={paginatedPosts}
               />
               <div className="flex justify-center items-center">

@@ -1,5 +1,4 @@
 import { postPathQuery } from "@/sanity/lib/queries";
-
 export default async function sitemap() {
   const baseUrl = "https://akarshan.vercel.app";
   const posts = await postPathQuery();
