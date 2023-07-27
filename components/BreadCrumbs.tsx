@@ -35,7 +35,7 @@ function BreadCrumbs({ className, ...props }: { className?: string }) {
       {path.map((p, i) => {
         if (i === path.length - 1) {
           return (
-            <span key={i} className="font-semibold">
+            <span key={i} className="font-semibold line-clamp-1">
               {p}
             </span>
           );
