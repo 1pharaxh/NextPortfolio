@@ -36,9 +36,9 @@ const SampleImageComponent = ({
   return (
     <Image
       alt={value?.alt || " Main blog image "}
-      src={builder.image(value).width(800).height(500).url()}
-      width={800}
-      height={500}
+      src={builder.image(value).width(width).height(height).url()}
+      width={width}
+      height={height}
       className="h-auto w-full rounded-xl shadow-xl text-transparent"
       style={{
         // Display alongside text if image appears inside a block text span
