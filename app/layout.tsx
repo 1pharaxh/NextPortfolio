@@ -20,6 +20,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <meta name="msvalidate.01" content="63E8620A6D68DFAFE17EF7856B76E074" />
       <body className={inter.className}>{children}</body>
     </html>
   );
