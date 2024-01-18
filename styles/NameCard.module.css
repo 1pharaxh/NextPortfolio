@@ -31,7 +31,12 @@
     100%{background-position: 0% 50%}
 } 
 
-
+@media screen and (max-width: 400px) {
+  .title {
+    text-align: center;
+  }
+  
+}
 
 /* .title {
     font-size: var(--fs);
