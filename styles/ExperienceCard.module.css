@@ -318,9 +318,9 @@
   
   @media screen and (max-width: 480px) {
   
-  .direction-l .desc,
-  .direction-r .desc {
-      margin: 1em 4em 0 4em;
+    .container {
+      padding-left: 0px;
+      padding-right: 0px;
   }
   
   }
