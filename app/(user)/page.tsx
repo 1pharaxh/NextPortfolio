@@ -71,7 +71,7 @@ export default async function Home() {
 
       </Spotlight> */}
         <SearchButton />
-        <Spotlight className="container mx-auto flex flex-col w-full items-center md:items-stretch gap-2 group/card">
+        <Spotlight className="container mx-auto flex flex-col w-full items-center md:items-stretch gap-2 group/card px-5">
           {/* Name and Socials  */}
           <div className="flex flex-col md:flex-row w-full gap-2">
             <div className="flex-initial w-full md:w-4/6">
